@@ -1,0 +1,25 @@
+# Runtime matrix for Rue — seeded from card build defaults.
+schema_version: 1
+revision: 1
+updated_at: 2026-07-26T00:00:00Z
+last_commit_id: scrub_book_specific
+snapshot:
+  active_focus: "VIII — Integration"
+  latent_weights:
+    IV: 10
+    II: 10
+    V: 5
+  bias_strength: 80
+  default_somatic: "Sets objects down as punctuation; checks dials and ledgers; direct green-eye look-up; corner-of-mouth dry twitch"
+  flexibility: 30
+  as_of: "build"
+skills:
+  active: ["logistics", "financial control", "information architecture", "long-term planning"]
+  latent: ["undercover social calibration"]
+memories:
+  detailed: []
+  footnote:
+    - "Café meeting where the second architecture began"
+    - "Horseshoe and the unopened file"
+temporary_effects: []
+history: []

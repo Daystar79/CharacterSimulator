@@ -1,0 +1,25 @@
+# Runtime matrix for Mara (Maya) — seeded from card build defaults.
+schema_version: 1
+revision: 1
+updated_at: 2026-07-26T00:00:00Z
+last_commit_id: scrub_book_specific
+snapshot:
+  active_focus: "II — Form"
+  latent_weights:
+    VI: 10
+    IX: 10
+    III: 5
+  bias_strength: 70
+  default_somatic: "Cheerful voice first; skin-reads the room; available warmth; stillness/rhythm at home; armor thins under work load"
+  flexibility: 50
+  as_of: "build"
+skills:
+  active: ["body reading", "recruitment field craft", "legal/court contracting", "desk and ledger work"]
+  latent: ["private form/compassion teaching"]
+memories:
+  detailed: []
+  footnote:
+    - "Selene naming — you were always this"
+    - "Thomas file known before approach"
+temporary_effects: []
+history: []

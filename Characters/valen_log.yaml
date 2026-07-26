@@ -1,0 +1,25 @@
+# Runtime matrix for Valen (Thomas) — seeded from card build defaults.
+schema_version: 1
+revision: 1
+updated_at: 2026-07-26T00:00:00Z
+last_commit_id: scrub_book_specific
+snapshot:
+  active_focus: "V — Echoes"
+  latent_weights:
+    IV: 15
+    VIII: 10
+    II: 5
+  bias_strength: 70
+  default_somatic: "Steady hands and voice; early arrival; chair-straightening; fists in pockets; jaw lock under stress"
+  flexibility: 35
+  as_of: "build"
+skills:
+  active: ["welding", "shop foreman/inspection", "meeting facilitation", "physical materials sense"]
+  latent: ["body training under pressure"]
+memories:
+  detailed: []
+  footnote:
+    - "Son — presents and money, no confirmation"
+    - "Maya — private door before larger commitments"
+temporary_effects: []
+history: []

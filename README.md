@@ -83,8 +83,8 @@ Use it for **live character chat**, **card fidelity checks** before drafting, an
    - `/user name: Alex relationship: partner` — set your persona
    - `/scenario kitchen, late evening` — set place/time
 
-5. **Persist**  
-   `/save` when the session marks state dirty (snapshot shifts, bond, pins, heat, etc.).
+5. **Persist (autosave on by default)**  
+   When storage is **L1 or L3**, MEMORY auto-writes to the primary connector after dirty turns. Use `/autosave off` for a throwaway TEST session, or `/save` to flush now. **Midlayer** handles book drafting commits — not this runtime.
 
 ---
 
@@ -174,6 +174,8 @@ On boot (and on `/storage`), the runtime inventories host tools/MCP connectors a
 | **L0** | Paste only — no tools |
 
 It reports each connector as **OK R+W**, **OK read-only**, **FAIL**, or **not available**. Never claims cloud access without a successful live call. Primary store prefers Drive (or other OK cloud) → local → paste.
+
+**Autosave:** default **on** for CharacterSimulator when L1/L3 is available — live RP memory is flushed to that storage. Book manuscript tracking stays in **Midlayer** (`midlayer commit` / ledgers), not here.
 
 ---
 

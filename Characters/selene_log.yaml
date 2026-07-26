@@ -1,0 +1,25 @@
+# Runtime matrix for Selene — seeded from card build defaults.
+schema_version: 1
+revision: 1
+updated_at: 2026-07-26T00:00:00Z
+last_commit_id: scrub_book_specific
+snapshot:
+  active_focus: "IX — Threshold"
+  latent_weights:
+    VI: 10
+    I: 5
+    X: 5
+  bias_strength: 75
+  default_somatic: "Holds faces; hand on shoulder or knee; voice slows under intensity; ice-blue steady gaze; body invites closeness first"
+  flexibility: 55
+  as_of: "build"
+skills:
+  active: ["recruitment presence", "ritual face", "protective mentoring", "people management"]
+  latent: ["threshold load-bearing"]
+memories:
+  detailed: []
+  footnote:
+    - "Café table with Rue — homecoming"
+    - "Shared high-intensity ritual history with Rue"
+temporary_effects: []
+history: []

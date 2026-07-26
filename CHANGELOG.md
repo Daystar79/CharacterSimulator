@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased] - 2026-07-26
 
 ### Added
+- **Talia card (performer OS)**: Expanded [`Characters/talia.md`](Characters/talia.md) + log — WV Orthodox → 19 cut → adult-creator routine; sexual delight; manga effect; core wound = fault-blindness (not Thomas-as-center). Optional cast history only.
+- **Random session variants**: Cards may define `session_variants` with `selection: random_on_load`. Runtime rolls shoot/chat/off (or card-defined modes) on `/load` and `/reset`; **no user picker**. Documented in [`CharacterRuntime.md`](CharacterRuntime.md). Talia ships three equal-weight modes.
 - **Related-project pin**: Added [`dependency.yaml`](dependency.yaml) for CognitiveMiddleware as sibling drafting product (shared assets + pin), not a monorepo extract.
 - **Git remotes**: Linked `origin` to [Daystar79/CharacterSimulator](https://github.com/Daystar79/CharacterSimulator) and `upstream` to [Daystar79/CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware) (related compare remote).
 - **Project changelog**: This file (`CHANGELOG.md`) for CharacterSimulator-specific release notes.
@@ -21,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Card authority / anti-drift**: Runtime now requires CARD as identity SSOT each turn; MEMORY only overlays runtime snapshot fields; chat history cannot replace voice/physical/hard_bans. Added `/reload card`, load/reset re-bind rules, and forbidden “play from model memory” failure modes.
 
 ### Changed
+- **Autosave default on**: CharacterRuntime defaults `autosave: true` when storage is L1/L3; dirty MEMORY flushes to primary connector after IC turns. Explicitly not Midlayer book-commit — live RP memory only. `/autosave off` for ephemeral TEST.
 - **README rewrite**: Replaced the short stub with a full product guide (quick start, pack schema, psyche model, commands, visual modes, safety, license carve-out, related-project map).
 - **Single public runtime**: Root [`CharacterRuntime.md`](CharacterRuntime.md) is the only engine. `Simulator/CharacterRuntime.md` is a stub pointer. Private unlocked runtime retired.
 - **Simple adult unlock**: `/adult on` = user confirms 18+ → unlock all adult features. Removed jurisdiction probes, country codes, and multi-step `/affirm` handshake. Character minor bans unchanged. Historical HEAT no longer permanently locked (still needs user adult + adult character).
