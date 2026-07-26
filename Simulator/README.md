@@ -1,32 +1,32 @@
-# Simulator (optional)
+# Simulator folder
 
-**Cognitive Middleware’s product is the drafting middle layer** (`Framework/`, character cards, logs, ledgers, linter).  
+CharacterSimulator’s chat engine is the **repo root** file:
 
-This folder is a **side tool**: live chat against a card so you (or friends) can stress-test behaviour before writing — or run private RP sessions. It is shipped because the same psyche engine is useful off-manuscript; it is **not** the marketed product surface.
+**[`../CharacterRuntime.md`](../CharacterRuntime.md)** — paste that entire file into any LLM chat.
 
-## CharacterRuntime.md
+This `Simulator/` directory is only layout helpers and old-path stubs. There is **no** second engine here, and CognitiveMiddleware **does not** ship a Simulator anymore.
 
-Self-contained drop-in. Paste the whole file into a chat (no git required).
+## Product boundary
+
+| Goal | Product |
+|:---|:---|
+| Live RP, card stress-test, private sessions | **CharacterSimulator** (this repo) |
+| Long-form novel drafting, ledgers, linter, deploy | **[CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware)** |
+
+## Modes (see root runtime)
 
 | Mode | Intent |
 |:---|:---|
 | **TEST** (default) | Author fidelity — “how would this card act?” |
-| **COMPANION** / **HEAT** | Optional live session modes (adult paths gated) |
+| **COMPANION** | Ongoing relationship energy |
+| **HEAT** | Explicit adult RP — `/adult on` (user 18+) **and** adult character |
 
-**Private adult RP (one switch):** after loading a canon-adult pack, send **`/adult on`**. That sets adult authorization + HEAT mode. Toggle off with `/adult off`. Age gates stay absolute (no minors, no age-up). Optional: `/bond set trust:70 attraction:60` if the relationship is already established.
+**Adult rule:** `/adult on` if you are 18+ → all adult features. Minors remain forbidden on the character side.
 
-Persistence: Character Pack (CARD + MEMORY) via Drive/local/paste — see the runtime file.
+**Visuals:** `Images/CharacterRenderingEngine.md` — off by default; `/render` anytime.
 
-**Image layer:** Visual rendering via `Images/CharacterRenderingEngine.md` is **off by default** (`visual.mode: off`) for zero turn latency in RP. Force a frame anytime with `/render`, or toggle auto motion rendering with `/visual off|fast|prompts|live`.
+## Disclaimer & license
 
-## When to use what
+On load, the runtime shows a mandatory legal disclaimer (user/host compliance, 18+ for adult features, no minors). Full text: [`../DISCLAIMER.md`](../DISCLAIMER.md).
 
-| Goal | Use |
-|:---|:---|
-| Write a novel / movement | `Framework/Main.md` + Rules + realm_data + cards + logs |
-| Check a card in chat | This simulator, `/mode test` |
-| Private live RP | This simulator · `/adult on` when both are adults · keep packs private |
-
-## License
-
-CC BY-SA 4.0 for the runtime text (root `LICENSE.md`). Your packs and private sessions are your data.
+Runtime text: CC BY-SA 4.0 (root `LICENSE.md`). Your packs and sessions are your data.

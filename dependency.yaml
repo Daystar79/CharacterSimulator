@@ -1,0 +1,62 @@
+# CharacterSimulator — related project pin
+# Concerns are separated: CognitiveMiddleware = drafting middle layer;
+# CharacterSimulator = chat / card-test / private RP product (owns CharacterRuntime).
+schema: character_simulator_dependency_v1
+role: sibling_product
+
+related:
+  name: CognitiveMiddleware
+  repository: https://github.com/Daystar79/CognitiveMiddleware
+  git: git@github.com:Daystar79/CognitiveMiddleware.git
+  branch: main
+  # Last inspected tip (update when syncing shared assets).
+  pinned_commit: d186dc106f317614955a7b756f1efa4c81f27273
+  pin_date: "2026-07-26"
+  note: >
+    CognitiveMiddleware no longer ships a Simulator. Chat/RP runtime lives only
+    in CharacterSimulator. Shared lineage: psyche model, realm data, card/log
+    scaffolds, dual license pattern.
+
+relationship: >
+  CharacterSimulator is the standalone roleplay engine and character stress-testing
+  product. CognitiveMiddleware is the file-native drafting middle layer (Framework,
+  rules, linter, deploy). They share vocabulary (realms, bias, somatics, card YAML)
+  but are separate repos with separate product surfaces. Do not treat this tree as
+  a subfolder extract of CognitiveMiddleware/Simulator.
+
+owned_here:
+  # CharacterSimulator is source of truth for these.
+  - CharacterRuntime.md
+  - Simulator/                 # layout helpers / pointers only; engine is root CharacterRuntime.md
+  - README.md
+  - DISCLAIMER.md
+  - CHANGELOG.md
+  - dependency.yaml
+  - Images/CharacterRenderingEngine.md   # visual pass for this runtime (may diverge from any CM copy)
+
+shared_optional_sync:
+  # May still align with CognitiveMiddleware when both need the same scaffold/data.
+  # Compare before overwrite; CS may intentionally diverge.
+  - Framework/Psychology/realm_data.yaml
+  - Characters/_template.md
+  - Characters/_log_template.yaml
+  - LICENSE.md                 # dual MIT + CC BY-SA pattern; adapt §3 for this repo
+
+not_in_this_repo:
+  # Drafting stack stays in CognitiveMiddleware only.
+  - Framework/Main.md
+  - Framework/Rules_Index.md
+  - Framework/Mechanics/**
+  - Framework/Prompts/**
+  - Framework/linter.py
+  - deploy_framework.py
+  - scripts/**
+  - Continuity_Ledger / Character_Change_Log (book ledgers)
+
+git_remote:
+  name: upstream
+  # Historical remote name; means "related CognitiveMiddleware", not parent monorepo.
+  url: git@github.com:Daystar79/CognitiveMiddleware.git
+  commands:
+    fetch: git fetch upstream
+    show_realm: git show upstream/main:Framework/Psychology/realm_data.yaml

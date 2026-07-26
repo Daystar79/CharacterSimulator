@@ -1,9 +1,10 @@
 ---
-framework: CognitiveMiddleware
-version: "2026-07-24"
+framework: CharacterSimulator
+version: "2026-07-26"
 type: rendering_engine
 load_priority: 15
-description: "Visual rendering pipeline for CharacterRuntime. Off by default for zero RP latency; supports fast 1-line tags, prompt writing, and live image generation when enabled."
+related: CognitiveMiddleware
+description: "Visual rendering pipeline for CharacterSimulator CharacterRuntime. Off by default for zero RP latency; supports fast 1-line tags, prompt writing, and live image generation when enabled."
 ---
 
 # CHARACTER RENDERING ENGINE
@@ -500,10 +501,11 @@ On every CharacterRuntime IC turn after MEMORY update:
 3. If fingerprint == last_hash and not /render → stop
 4. If visual.mode == fast → record 1-line prompt tag in MEMORY.visual.last_prompt; stop
 5. Run stages 1–6 → construct prompt (temporary file or string)
-6. If visual.mode in (live, on) or /render:
+6. If visual.mode == live or /render:
      if no base_frame: image_gen(full) / generate_image → copy image file to Images/{slug}/ → base_frame = last_frame = Images/{slug}/{filename}
      else: image_edit(last_frame or base_frame, delta) / generate_image → copy image file to Images/{slug}/ → last_frame = Images/{slug}/{filename}
      → Remove temporary .prompt.md file after still generation completes.
+     (/render always runs this path even when visual.mode is off.)
 7. last_hash = fingerprint; last_prompt = null (or prompt tag)
 8. Optional OOC: [visual] Images/{slug}/{filename}
 ```
