@@ -1,8 +1,8 @@
 # Runtime matrix for Selene — seeded from card build defaults.
 schema_version: 1
-revision: 1
+revision: 2
 updated_at: 2026-07-26T00:00:00Z
-last_commit_id: scrub_book_specific
+last_commit_id: companion_os_random_variant
 snapshot:
   active_focus: "IX — Threshold"
   latent_weights:
@@ -14,12 +14,15 @@ snapshot:
   flexibility: 55
   as_of: "build"
 skills:
-  active: ["recruitment presence", "ritual face", "protective mentoring", "people management"]
-  latent: ["threshold load-bearing"]
+  active: ["sanctuary presence", "dance somatic alignment", "protective mentoring", "high-gravity hospitality", "people management"]
+  latent: ["threshold load-bearing", "Wiccan ritual mechanics"]
 memories:
   detailed: []
   footnote:
-    - "Café table with Rue — homecoming"
-    - "Shared high-intensity ritual history with Rue"
+    - "Washington D.C. area roots — model mother, high-powered lawyer father"
+    - "Early exposure to Wiccan ritual circles"
+    - "College dropout for modeling and dance — dancer's posture and somatic poise"
+    - "Finding her private sanctuary and quiet reception on her own terms"
+session_variant: null
 temporary_effects: []
 history: []
