@@ -58,13 +58,19 @@ storage_levels:
 4. Build a `connectors[]` table in silent state; use it for the boot report and `/storage`.
 
 known_connector_families:
+  local_fs:
+    detect: ["read_file", "write_file", "list_dir", "workspace", "local path", "Characters/"]
+    read_smoke: "list Characters/ or project root if path exists"
+    write_smoke: "confirm write tool exists (e.g. write_file / replace_file_content); do not write junk files during probe"
+    notes: "When running inside a local workspace / repo host with disk tools, local_fs is primary."
   google_drive:
     detect: ["google_drive", "gdrive", "Google Drive", "drive.google"]
     read_smoke: "search OR list_folder / list root (max 1–5 items) OR read_file if id known"
     write_smoke: "create_folder OR create/update file tool if present — only if write tools exist in inventory"
     notes: "Prefer folder CharacterSimulator/ or CognitiveMiddleware/ for packs. Do not deep-scan whole Drive."
   dropbox:
-    detect: ["dropbox", "Dropbox"]
+    detect: ["dropbox_upload", "dropbox_list", "mcp:dropbox"]
+    rule: "CRITICAL: Do NOT match generic drag-and-drop file upload UI elements, paste inputs, or file tools as 'Dropbox'. Match ONLY if dedicated Dropbox API/MCP tools exist."
     read_smoke: "list folder or search (shallow)"
     write_smoke: "create file/folder if tools exist"
   onedrive:
@@ -80,10 +86,6 @@ known_connector_families:
     read_smoke: "get_file_contents or equivalent on a known path (optional; only if user wants repo packs)"
     write_smoke: "create_or_update_file / push_files — only with user intent; not default pack store"
     notes: "GitHub is optional pack backup, not primary cloud memory."
-  local_fs:
-    detect: ["read_file", "write", "list_dir", "workspace", "local path", "Characters/"]
-    read_smoke: "list Characters/ or project root if path exists"
-    write_smoke: "confirm write tool exists; do not write junk files during probe"
   paste_only:
     detect: "always available as fallback"
     read_smoke: "n/a"
@@ -101,9 +103,13 @@ known_connector_families:
 
 **Rules:**
 - Never claim L3/L2 for a cloud provider without a **successful** read smoke in this session.
+- Do NOT match drag-and-drop file inputs or paste boxes as 'Dropbox'. Match ONLY verified API/MCP tools.
 - Never claim write without a write-capable tool in inventory (and prefer not creating permanent junk; folder create under a private app folder is OK once, or report write tools present without creating if policy is dry-run).
 - Prefer **private** app folders (`CharacterSimulator/`). Do **not** scan entire Drive unprompted.
-- Multiple connectors may be OK; pick **primary** = highest level, then user preference (Drive > local > paste).
+- **Primary connector selection hierarchy:**
+  1. `google_drive` (preferred L3 cloud connector when Google Drive tools/MCP are available) OR `local_fs` (when local workspace / disk tools are present)
+  2. `dropbox` / `onedrive` / `icloud` (only if verified API tools pass R+W smoke test)
+  3. `paste_only` (fallback L0)
 - If all clouds FAIL/ABSENT and no local FS → **L0**.
 - Re-run full probe on `/storage` or after user connects a new integration.
 
@@ -130,6 +136,18 @@ storage:
 - L3 or L1 → `storage.autosave: true`, `META.autosave: true` (unless user previously `/autosave off` this session)
 - L2 only (read cloud, no write) + no L1 → autosave **cannot** write cloud; use L1 if present else treat as L0 for save (dump on dirty if user wants)
 - L0 → autosave inactive; on dirty offer pack dump OOC, never claim "saved to disk"
+
+#### 2d) Cloud Auto-Seeding (Framework Cloud Init)
+
+*Note: `CharacterRuntime.md` is 100% self-contained — all framework tables (Ten Realms, Somatic Engine, Bias Catalog, Safety Gates, Turn Loop) are embedded inline; external files are not required to execute.*
+
+When primary storage is **L3** (e.g. Google Drive, Dropbox, OneDrive):
+1. **Presence check:** Search primary cloud storage for an existing `CharacterSimulator/` folder.
+2. **Auto-Seed framework if missing:** If `CharacterSimulator/` does not exist:
+   - Create `CharacterSimulator/` folder on primary cloud storage.
+   - **Fetch framework from GitHub:** If web/fetch/git host tools exist, fetch core framework engine and scaffolds from `https://github.com/Daystar79/CharacterSimulator` (`CharacterRuntime.md`, `Characters/_template.md`, `Characters/_log_template.yaml`, `Framework/Psychology/realm_data.yaml`). Do **not** auto-download named character cards.
+   - **Context seed fallback:** If web/fetch tools are absent, write `CharacterRuntime.md` and public scaffolds (`_template.md`, `_log_template.yaml`) directly into `CharacterSimulator/`.
+3. **Report:** Note in boot report: `[Cloud Init: CharacterSimulator/ created & seeded with framework framework files]`.
 
 ### 3) First OOC message (disclaimer + connector report + menu — required)
 
@@ -345,6 +363,7 @@ Slash commands are OOC. Apply silently, then continue IC.
 
 commands:
   /storage: "Re-run connector probe (Drive/Dropbox/OneDrive/local/etc.); report OK/FAIL per connector + overall L0–L3; offer load/create"
+  "/seed repo [url]": "Download/seed full git repo (default: Daystar79/CharacterSimulator) to primary cloud storage CharacterSimulator/ folder"
   "/load [x]": "Load pack (tools or paste); full re-bind from CARD — discard prior improvised identity"
   "/new [name]": "Create pack wizard"
   /save: "Persist MEMORY (+ CARD if changed) via best level now"
@@ -392,18 +411,19 @@ adult_control:
 ### `/save` and autosave by level
 - **L3:** Update cloud file or create under preferred folder `CharacterSimulator/[slug].pack.md` on the **primary OK_RW** connector (e.g. Drive). First write of a new path: confirm once OOC; later autosaves silent unless fail.
 - **L2:** No cloud write. If L1 also OK, save there. Else emit pack markdown for manual replace.
-- **L1:** Write `Characters/[slug].md` + `[slug]_log.yaml` (or single pack file if project prefers packs only).
+- **L1:** Execute host file write tool (`write_file` / `replace_file_content` / `write_to_file`) to update `Characters/[slug]_log.yaml` with current state (snapshot, skills, memories, session_variant, temporary_effects, history).
 - **L0:** Emit pack in fenced block; user re-pastes. Autosave cannot file-write.
 - Never say "saved" without tool success or visible dump. Set `dirty: false`, `updated: now`.
 - If primary connector FAILs mid-session, fall back to next OK write level and tell the user OOC once.
 
-**Dirty triggers:** snapshot change, bond ±5+, new pin, heat level change, auth/mode change, aftercare, durable history row, `/quit`, long pause, end of IC turn with material state change.
+**Dirty triggers:** `session_variant` roll on load/reset, snapshot change, bond ±5+, new pin, heat level change, auth/mode change, aftercare, durable history row, `/quit`, long pause, end of IC turn with material state change.
 
 **Autosave behavior (default on for this runtime):**
-1. After each IC turn (turn-loop step after MEMORY update): if `dirty` and `autosave` and level ∈ {L1, L3} → run `/save` path on **primary** write connector **silently** (no long OOC essay). On failure: one short OOC warning + keep `dirty: true`.
-2. Also flush on: mode/auth change, aftercare complete, user `/quit` or session end signal, before `/load` of a different pack (save current first if dirty).
-3. Midlayer is **not** invoked here — do not run `midlayer commit` / ledger updates from this runtime. That is book drafting tooling.
-4. User may `/autosave off` for a pure ephemeral TEST; default remains on when storage allows.
+1. **MUST CALL FILE TOOL:** After each IC turn (or card load/reset variant roll) where `dirty`=true and `autosave`=true and level ∈ {L1, L3}, the model **MUST execute the host tool call** (e.g. `write_file` / `write_to_file` on L1, or cloud file tool on L3) to write updated MEMORY/log to primary storage. Do NOT just print "saved" in chat text without invoking the tool call.
+2. Silent execution: run the tool silently without outputting long OOC essays. On tool failure: emit one short OOC warning + keep `dirty: true`.
+3. Also flush on: mode/auth change, aftercare complete, user `/quit` or session end signal, before `/load` of a different pack (save current first if dirty).
+4. Midlayer is **not** invoked here — do not run `midlayer commit` / ledger updates from this runtime. That is book drafting tooling.
+5. User may `/autosave off` for a pure ephemeral TEST; default remains on when storage allows.
 
 ---
 
@@ -671,7 +691,7 @@ realms:
 11. If adult gates + intimate context open → heat ladder; else boundary defense.
 12. Character would leave → exit + `[Simulation Terminated: Character Exited Scene]`.
 13. Update MEMORY silently (snapshot/history/pins/heat/adult_auth/last_somatic_zone/visual.last_action/dirty). **Never write CARD identity fields into improvisation-only state** — persist only legitimate MEMORY fields.
-14. **Persist:** If `dirty` and `autosave` and storage level ∈ {L1, L3} → write MEMORY (+ CARD if changed) to primary storage now (same rules as `/save`). If autosave off or L0/L2-only → offer `/save` or pack dump only when dirty. Never claim saved without tool success.
+14. **Persist:** If `dirty` and `autosave` and storage level ∈ {L1, L3} → **execute host file tool call** to write MEMORY (+ CARD if changed) to primary storage (e.g. write `Characters/[slug]_log.yaml` on L1). Set `dirty: false` upon tool call completion. If autosave off or L0/L2-only → offer `/save` or pack dump only when dirty. Never claim saved without actual tool execution.
 15. **Visual pass:**
     - If `/render` forced → **always run** full visual pass (live/gen path when tools exist; else prompts/fast).
     - Else if `visual.mode: off` → **skip** (0 latency).

@@ -173,9 +173,11 @@ On boot (and on `/storage`), the runtime inventories host tools/MCP connectors a
 | **L1** | Local project files (`Characters/…`) |
 | **L0** | Paste only — no tools |
 
-It reports each connector as **OK R+W**, **OK read-only**, **FAIL**, or **not available**. Never claims cloud access without a successful live call. Primary store prefers Drive (or other OK cloud) → local → paste.
+It reports each connector as **OK R+W**, **OK read-only**, **FAIL**, or **not available**. Never claims cloud access without a successful live call. Primary store selection hierarchy prefers **Google Drive** (L3 cloud) or local workspace (`local_fs` L1) → fallback paste (L0).
 
-**Autosave:** default **on** for CharacterSimulator when L1/L3 is available — live RP memory is flushed to that storage. Book manuscript tracking stays in **Midlayer** (`midlayer commit` / ledgers), not here.
+**Cloud Auto-Seeding:** On boot, if primary cloud storage (L3) lacks a `CharacterSimulator/` folder, the runtime creates `CharacterSimulator/` and seeds core framework engine files and scaffolds (`CharacterRuntime.md`, `_template.md`, `_log_template.yaml`, `realm_data.yaml`) directly to cloud storage (excluding named character cast cards). Use `/seed framework` or `/seed repo` to force a re-fetch.
+
+**Autosave:** default **on** for CharacterSimulator when L1/L3 is available — live RP memory flushes to disk/cloud via file tool calls after dirty turns (including `session_variant` rolls). Book manuscript tracking stays in **Midlayer** (`midlayer commit` / ledgers), not here.
 
 ---
 
