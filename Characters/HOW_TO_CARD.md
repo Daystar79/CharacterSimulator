@@ -1,50 +1,56 @@
 # How to Make a Character Card
 
-You do **not** need to write raw YAML by hand. The recommended path is guided creation directly in chat.
+You do **not** need to write raw YAML by hand.
 
 ---
 
-## 🚀 Recommended: Guided Create (Full Card)
+## Path A: Guided Create (original OC)
 
-1. Copy and paste [`CharacterRuntime.md`](../CharacterRuntime.md) into any LLM chat.
-2. Select **[2] Create a character** (or type `create` / `build a character`).
-3. Answer the plain-language questions step by step:
+1. Paste [`CharacterRuntime.md`](../CharacterRuntime.md).
+2. Select **[2] Create a character**.
+3. Answer plain-language steps. User answers are SSOT — no invention.
 
 | Step | You Provide | Lands on Card as |
 |:---|:---|:---|
 | 1. Name | Full name & call-name | `name`, `call_name` |
 | 2. Age | Integer age | `age`, `canon_adult` |
-| 3. Look | Physical appearance & motion line | `physical` |
-| 4. Voice | Sound archetype & hard bans | `voice` block & `hard_bans` |
-| 5. Wound & Gift | What they get wrong **and** what they become under trust | `cognitive_bias`, `cognitive_gift`, focus, somatics, `verbal_defense`, `generative_stance` |
-| 6. **History & Knowledge** | 2–3 anchors, general/esoteric/personal depth | **`history_anchors`**, **`depth_of_knowledge`** |
-| 7. Opening | Place + pressure + object | `scene_seeds` |
-| 8. Adult Limits | Intimacy limits (if adult RP intended) | Voice bans / card notes |
-
-4. The runtime engine maps framework fields off-page and outputs a complete YAML card.
-5. Select **Play now**, **Tweak**, or **Show pack** to export.
+| 3. Look | Physical appearance & motion | `physical` |
+| 4. Voice | Sound & hard bans | `voice` block |
+| 5. Wound & Gift | Want + fear under pressure/trust | bias, gift, somatics |
+| 6. History & Knowledge | 2–3 anchors + knowledge depth | `history_anchors`, `depth_of_knowledge` |
+| 7–8 | Opening / adult limits (optional) | `scene_seeds`, bans |
 
 ---
 
-## 💡 Why History & Knowledge Matter
+## Path B: Derive from Existing (canon-locked)
 
-To keep character responses grounded without inventing biography or possessing omniscient knowledge, two core sections are required:
+For Shinano, Deedlit, game/anime/book characters, etc.
 
-* **`history_anchors`:** 2–3 coarse past facts. Remained vague in speech until triggered by props, topics, or pressure.
-* **`depth_of_knowledge`:** Defines what the character knows (`general`, `esoteric`) versus what is foggy or unexamined (`personal`).
+1. Paste runtime → **[3] Derive from existing** (or `derive [name]`).
+2. Engine **fetches documented public canon** (wiki / official profile).
+3. That fetch is **SSOT**. Model recall is not authority.
+4. **Physical is locked** to canon appearance — no beautification, no body drift.
+5. History, voice, knowledge only from source. Gaps stay blank.
+6. Accuracy summary (kept / compressed / left blank) → Play / Tweak / Show pack.
+
+**Failure modes this prevents:** inventing the character; getting psychology right while hosing the body.
 
 ---
 
-## 🛠️ Hand-Editing Files (Power Users)
+## Why History & Knowledge Matter
 
-For manual creation or author editing:
+* **`history_anchors`:** 2–3 coarse past facts; vague in speech until triggered.
+* **`depth_of_knowledge`:** What they know vs what is foggy — stops omniscient drift.
+
+---
+
+## Hand-Editing (Power Users)
 
 1. Copy [`_template.md`](./_template.md) → `Characters/[slug].md`.
 2. Copy [`_log_template.yaml`](./_log_template.yaml) → `Characters/[slug]_log.yaml`.
-3. Fill identity, voice, `history_anchors`, `depth_of_knowledge`, and psyche fields.
-4. Load the pack in runtime mode **TEST** to stress-test identity fidelity.
+3. Fill fields; stress-test in mode **TEST**.
 
 | File | Role |
 |:---|:---|
-| `Characters/[slug].md` | Permanent Identity (voice, bias, history anchors, knowledge depth) |
-| `Characters/[slug]_log.yaml` | Runtime State (snapshot, memories, skills, durable history) |
+| `Characters/[slug].md` | Permanent identity |
+| `Characters/[slug]_log.yaml` | Runtime state |
