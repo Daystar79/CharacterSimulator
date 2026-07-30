@@ -4,13 +4,13 @@ version: "2026-07-30"
 type: rendering_engine
 load_priority: 15
 related: CognitiveMiddleware
-description: "Constraint-based visual projector. Identity, clothing, scene, somatic pose, style. No camera direction. No cinematic defaults. Projects already-resolved RP state."
+description: "Constraint-based visual projector. Identity, clothing, scene, somatic pose, style. No camera direction. No cinematic defaults. Projects already-resolved RP state. Heat shifts register, not blush intensity."
 ---
 
 # CHARACTER RENDERING ENGINE
 
 Visual frames are assembled, never directed.  
-The RP engine has already resolved clothing, somatic cascade, location, and intensity.  
+The RP engine has already resolved clothing, somatic cascade, location, intensity, and heat.  
 This engine only projects that state under hard constraints.  
 **Default:** `visual.mode: off`.
 
@@ -64,6 +64,28 @@ This engine only projects that state under hard constraints.
 
 ---
 
+## HEAT PROJECTION
+
+Heat is a register shift, not a blush slider.
+
+| Heat | Register | Visual Priority |
+|------|----------|-----------------|
+| 0–1 | Neutral / composed | Closed posture, intact clothing, minimal flush |
+| 2 | Charged subtext | Soft openness, light flush allowed |
+| 3 | Barriers loosening | Clothing begins to open, moderate somatic load |
+| 4 | Explicit / intentional | Open clothing state, deliberate body language, restrained flush |
+| 5 | Peak / aftercare | Minimal barriers, heavy relaxed posture, warm skin — not cartoon blush |
+
+**Hard rules at heat ≥ 4 with adult auth:**
+
+- Prefer seductive, intentional body language over exaggerated facial flush.
+- Blush remains secondary and realistic (warm skin, slight color). Never tomato-red or comically overdone.
+- Clothing barriers and posture carry the heat signal.
+- The image should read as controlled adult intimacy (PG-13 → R), not heightened embarrassment or cute overheating.
+- Do not soften high heat back into mild companion energy.
+
+---
+
 ## ASSEMBLY RULES
 
 **Layer 1 – Identity**  
@@ -71,7 +93,8 @@ Copy `CARD.physical` with minimal cleanup. No added adjectives.
 
 **Layer 2 – Clothing**  
 Current visible clothing only. Source: `clothing_barriers` or last established outfit as resolved by RP.  
-If unknown → omit rather than invent.
+If unknown → omit rather than invent.  
+At heat ≥ 4, barriers are expected to be open or lowered; project the state as given.
 
 **Layer 3 – Scene**  
 Location + time of day + primary light source + one atmosphere word max.  
@@ -81,7 +104,8 @@ Example form: `private atelier, evening, warm lantern light, quiet`
 Translate active somatic zone + intensity into physical description.  
 Use the realm micro/moderate/macro/release lists as the only source.  
 Multiple zones allowed if the runtime cascade engaged them.  
-Never describe emotion directly; describe the body.
+Never describe emotion directly; describe the body.  
+At high heat, favor weight-in-hips, open torso, slower gestures, and intentional hands over facial exaggeration.
 
 **Layer 5 – Style**  
 Append one style tag from the default hierarchy or user `/style`.
@@ -118,7 +142,9 @@ Example shape:
 - Expanding physical description beyond CARD  
 - Using photoreal defaults  
 - Re-interpreting clothing or pose already resolved by RP  
-- Generating when motion fingerprint is unchanged
+- Generating when motion fingerprint is unchanged  
+- Turning high heat into exaggerated blush or cartoon arousal  
+- Softening heat ≥ 4 back into mild companion energy
 
 ---
 
