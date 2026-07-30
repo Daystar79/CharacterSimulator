@@ -1,90 +1,125 @@
 ---
 framework: CharacterSimulator
-version: "2026-07-29"
+version: "2026-07-30"
 type: rendering_engine
 load_priority: 15
 related: CognitiveMiddleware
-description: "Visual rendering pipeline for CharacterSimulator CharacterRuntime. Off by default for zero RP latency; supports fast 1-line tags, prompt writing, and live image generation when enabled."
+description: "Constraint-based visual projector. Identity, clothing, scene, somatic pose, style. No camera direction. No cinematic defaults. Projects already-resolved RP state."
 ---
 
 # CHARACTER RENDERING ENGINE
 
-Convert CharacterRuntime state into visual frames on demand or on scene motion.  
-**Default:** `visual.mode: off` (0 RP latency).  
-**Enable via:** `/visual off|fast|prompts|live` or trigger on-demand via `/render`.
+Visual frames are assembled, never directed.  
+The RP engine has already resolved clothing, somatic cascade, location, and intensity.  
+This engine only projects that state under hard constraints.  
+**Default:** `visual.mode: off`.
 
 ---
 
-## ⚡ WORKFLOW & ARCHITECTURE
+## HARD CONSTRAINTS
 
-```text
-CharacterRuntime IC beat → MEMORY update (scene, somatic, action)
-  → Motion Fingerprint Check (location, time, zone, action, heat)
-  → Rendering Pipeline (Stages 1–6)
-  → Image Generation (base_frame or delta edit from last_frame)
-  → Save still to Images/{slug}/ → Clean up temporary .prompt.md → Update MEMORY.visual
+1. **Layer Order is Absolute**  
+   Prompt must be built in this exact sequence. No reordering. No interleaving.
+
+   ```
+   [1. Identity]     ← CARD.physical only
+   [2. Clothing]     ← current outfit / clothing_barriers (as resolved by RP)
+   [3. Scene]        ← location + time + light + atmosphere
+   [4. Pose]         ← somatic zone(s) + intensity only
+   [5. Style]        ← art medium
+   ```
+
+2. **Somatic Data Belongs Only in Layer 4**  
+   Pose and body language are derived exclusively from the active somatic zone(s) and intensity band (micro / moderate / macro / release).  
+   Somatic information is forbidden in Identity, Clothing, or Scene layers.
+
+3. **No Camera Language**  
+   Forbidden tokens unless user explicitly requests them:  
+   `cinematic`, `film still`, `movie still`, `depth of field`, `bokeh`, `lens flare`, `shot on`, `35mm`, `anamorphic`, `camera angle`, `low angle`, `high angle`, `dutch angle`, `close-up`, `medium shot`, `wide shot`, `extreme close-up`.
+
+4. **Style Default Hierarchy** (first match wins)  
+   1. `anime` / `manga`  
+   2. `colored drawing` / `illustration`  
+   3. `oil painting` / `painterly`  
+   4. User override via `/style`  
+   Photoreal / cinematic styles are never default.
+
+5. **Token Discipline**  
+   Prefer short, concrete descriptors.  
+   Ban padding: `highly detailed`, `intricate`, `masterpiece`, `best quality`, `8k`, `ultra realistic`, `photorealistic` (unless style is explicitly photoreal).
+
+6. **Identity is Stable**  
+   Layer 1 is taken only from `CARD.physical`.  
+   Runtime must not invent or elaborate permanent physical traits.
+
+7. **Clothing is Projected, Not Interpreted**  
+   Layer 2 reflects the exact clothing state already decided by the RP engine.  
+   If the character removes a top, opens a robe, or changes barriers, the image layer simply renders the new state. No second decision.
+
+8. **Motion Gate**  
+   Image generation fires only when:  
+   - `visual.mode` is `live` or `/render` is called, **and**  
+   - motion fingerprint changed (location | somatic_zone | intensity | clothing | heat).  
+   Unchanged state → no new image.
+
+---
+
+## ASSEMBLY RULES
+
+**Layer 1 – Identity**  
+Copy `CARD.physical` with minimal cleanup. No added adjectives.
+
+**Layer 2 – Clothing**  
+Current visible clothing only. Source: `clothing_barriers` or last established outfit as resolved by RP.  
+If unknown → omit rather than invent.
+
+**Layer 3 – Scene**  
+Location + time of day + primary light source + one atmosphere word max.  
+Example form: `private atelier, evening, warm lantern light, quiet`
+
+**Layer 4 – Pose**  
+Translate active somatic zone + intensity into physical description.  
+Use the realm micro/moderate/macro/release lists as the only source.  
+Multiple zones allowed if the runtime cascade engaged them.  
+Never describe emotion directly; describe the body.
+
+**Layer 5 – Style**  
+Append one style tag from the default hierarchy or user `/style`.
+
+---
+
+## OUTPUT CONTRACT
+
+Final prompt must be a single flat string in layer order.  
+No stage directions. No camera. No quality boosters.  
+Example shape:
+
+```
+[physical], [clothing], [scene], [somatic pose], [style]
 ```
 
-### Pipeline Stages
-1. **Model Loader:** Construct base geometry from CARD (`physical`, `age`, `cultural_bias`).
-2. **Animation System:** Map somatic zone & intensity to pose/expression.
-3. **Scene Composer:** Convert `MEMORY.scene` & `scene_seeds` to lighting, time, atmosphere.
-4. **Camera System:** Determine shot type (Medium/Close-up/Wide/Extreme) & angle based on narrative mood.
-5. **Material & Shader:** Apply art style (`visual.style`: cinematic, anime, painterly, sketch, pixel).
-6. **Render Output:** Generate prompt & render still via `image_gen` or `image_edit` / `generate_image`.
+---
+
+## COMMANDS
+
+- `/render` — force assembly + generate under current constraints  
+- `/visual off` — default, zero cost  
+- `/visual fast` — write one-line tag only  
+- `/visual prompts` — write prompt file, do not generate  
+- `/visual live` — generate on motion change  
+- `/style anime|manga|illustration|oil|painterly|...` — override Layer 5
 
 ---
 
-## 🎭 ANIMATION & CAMERA MAPPING
+## FAILURE MODES (DO NOT DO)
 
-### Somatic Zone to Visual Focus
-| Zone | Visual Focus | Keywords |
-|:---|:---|:---|
-| **1: Face & Eyes** | Expressions, gaze, micro-expressions | `eyes`, `gaze`, `facial expression` |
-| **2: Throat & Neck** | Neck tension, breathing, swallowing | `neck`, `throat`, `breathing` |
-| **3: Chest & Breathing** | Chest movement, posture, breath | `chest`, `posture`, `shoulders` |
-| **4: Hands & Arms** | Positioning, gestures, finger detail | `hands`, `gestures`, `arm position` |
-| **5: Spine & Posture** | Body posture, stance, alignment | `spine`, `posture`, `body language` |
-| **6: Feet & Staging** | Grounding, foot placement, distance | `stance`, `feet`, `grounding` |
-
-### Framing by Context
-| Context | Shot Type | Purpose |
-|:---|:---|:---|
-| Dialogue (casual) | Medium Shot (waist up) | Character posture + hand gestures |
-| Dialogue (intense) | Close-up (chest up) | Facial expressions & micro-tells |
-| Action / Staging | Wide Shot (full body) | Spatial movement & environment |
-| Intimate / Somatic | Close-up / Extreme Close-up | Emotional details & specific body tells |
+- Putting somatic tells into the identity description  
+- Adding camera or cinematic language by default  
+- Expanding physical description beyond CARD  
+- Using photoreal defaults  
+- Re-interpreting clothing or pose already resolved by RP  
+- Generating when motion fingerprint is unchanged
 
 ---
 
-## 🔄 MOTION FINGERPRINTING & TRIGGERS
-
-After every IC beat, calculate motion fingerprint:
-```text
-hash = location | time | somatic_zone | last_action | clothing_barriers | heat.level | active_focus
-```
-
-* **Fire when:** `hash != visual.last_hash` AND `visual.mode != off`, OR when `/render` is run.
-* **Skip when:** `visual.mode: off`, OOC-only turn, or hash unchanged.
-
-### Commands
-- `/render [preset]` — Force immediate image frame (`portrait`, `action`, `closeup`, `scene`, `fullbody`).
-- `/visual off` — **Default:** Disable auto pass (zero latency).
-- `/visual fast` — Record 1-line scene tag in `MEMORY.visual.last_prompt`.
-- `/visual prompts` — Write `.prompt.md` files to `Images/{slug}/` on motion beats.
-- `/visual live` — Auto-pass + render stills on motion beats via image tools.
-- `/style [preset]` — Set `visual.style` (`cinematic`, `anime`, `painterly`, `sketch`, `pixel`).
-
----
-
-## 📷 LIVE IMAGE GENERATION & CONTINUITY
-
-When `visual.mode: live` or `/render` executes:
-1. **First Frame:** Call `image_gen` (or `generate_image`) with full physical appearance & scene prompt → save to `Images/{slug}/{timestamp}_{descriptor}.jpg` → set `base_frame` and `last_frame`.
-2. **Subsequent Beats:** Call `image_edit` with `image: last_frame` and a delta-only prompt (pose, light, staging change) → save new image → update `last_frame`.
-3. **Prompt Cleanup Rule:** Once the image file is written to `Images/{slug}/`, **automatically delete/unlink temporary `.prompt.md` files** to prevent disk clutter (prompts retained on disk only in `visual.mode: prompts`).
-4. **Agent Constraint:** File writing and image generation execute strictly in local environments (L1/L3 storage). In paste-only (L0) environments, rendering degrades silently to `fast` in-memory tags.
-
----
-
-*When the scene moves, the frame moves.*
+*The RP engine decides. This engine only projects.*
