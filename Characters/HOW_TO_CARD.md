@@ -16,7 +16,7 @@ You do **not** need to write raw YAML by hand. The recommended path is guided cr
 | 2. Age | Integer age | `age`, `canon_adult` |
 | 3. Look | Physical appearance & motion line | `physical` |
 | 4. Voice | Sound archetype & hard bans | `voice` block & `hard_bans` |
-| 5. Wound / Bias | What they get wrong (plain English) | `cognitive_bias`, focus, somatics |
+| 5. Wound & Gift | What they get wrong **and** what they become under trust | `cognitive_bias`, `cognitive_gift`, focus, somatics, `verbal_defense`, `generative_stance` |
 | 6. **History & Knowledge** | 2–3 anchors, general/esoteric/personal depth | **`history_anchors`**, **`depth_of_knowledge`** |
 | 7. Opening | Place + pressure + object | `scene_seeds` |
 | 8. Adult Limits | Intimacy limits (if adult RP intended) | Voice bans / card notes |

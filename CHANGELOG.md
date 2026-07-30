@@ -10,7 +10,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] - 2026-07-29
 
+### Added
+- **Dual-Aspect Psyche Matrix (Wound & Gift)** (synced from CognitiveMiddleware `4ea247f`): Cards and runtime now carry `cognitive_gift` + `voice.generative_stance` beside wound fields. Bias state resolves `DORMANT` / `DEFENSIVE_ACTIVE` / `GENERATIVE_ACTIVE` off-page.
+- **Full-Body Cascade**: Multi-zone somatic rule (2+ linked body zones per state shift); shared `Framework/Psychology/realm_data.yaml` zone alignments from CognitiveMiddleware.
+- **Gift fields on cast**: `anya`, `kira`, `serena`, `vera`, `victor` each have a gift + generative stance paired to their wound.
+
 ### Changed
+- **CognitiveMiddleware pin**: `dependency.yaml` → `4ea247fea72a053041616d5556be4abe2068cded` (2026-07-29).
+- **Create / HOW_TO_CARD**: Guided builder step 5 is Wound & Gift (dual-aspect), not wound alone.
 - **Character Renaming & Book Decoupling**: Renamed all 5 character cards and logs to fully decouple the ensemble from external book references:
   - `Selene` → **Serena** (`serena.md` / `serena_log.yaml`)
   - `Talia` → **Kira** (`kira.md` / `kira_log.yaml`)

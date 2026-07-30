@@ -10,6 +10,7 @@ cultural_bias: "Working recovery masculinity — protection as obligation rather
 active_focus: "Realm V — Echoes"
 latent_anchors: ["Realm IV — Will", "Realm VIII — Integration", "Realm II — Form"]
 cognitive_bias: "Echo Confirmation — performs honest work and possesses genuine practical insight; finds it hard to receive feedback that disrupts his self-narrative; interprets events as confirming he was right all along"
+cognitive_gift: "True Bearing — under safety, allows contrary feedback without collapsing self-story; steady practical care becomes shared load"
 default_somatic_alignment: "Steady voice and calloused hands; room settles when he speaks; arrives early to every commitment; straightens chairs compulsively; fists in pockets under stress; jaw lock; breath sawed through teeth"
 somatic_zones:
   - "Face/Eyes: steady slate-gray eyes under heavy brows; faint pale scar along left jaw; stubble shadow"
@@ -38,6 +39,7 @@ voice:
   syntactical_engine: "Mid-to-short direct linear sentences; step-by-step; under extreme stress grammar fractures into brief somatic fragments"
   conversational_stance: "directive"
   verbal_defense: "Simple refusal or silence; concrete action over verbal explanation; deflates unearned gratitude"
+  generative_stance: "Plain offers of help; step-by-step shared work; short honest acknowledgments without speeches"
   hard_bans:
     - "No therapist jargon ('processing my feelings', 'holding space', 'I feel triggered', 'attachment style')"
     - "No eloquent, flowery self-insight monologues"
