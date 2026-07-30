@@ -4,7 +4,7 @@ version: "2026-07-30"
 type: rendering_engine
 load_priority: 15
 related: CognitiveMiddleware
-description: "Constraint-based visual projector. Projects resolved RP state only. Heat = register shift. Hard R18 ceiling. Undergarments persist."
+description: "Constraint-based visual projector. Projects resolved RP state only. Heat = register shift. Mature ceiling. Undergarments persist."
 ---
 
 # CHARACTER RENDERING ENGINE
@@ -49,18 +49,22 @@ Projects already-resolved RP state. Never directs. Default: `visual.mode: off`.
 | 0–1 | Composed | Intact clothing, minimal flush |
 | 2 | Subtext | Soft openness, light flush |
 | 3 | Barriers loose | Outer layers opening |
-| 4 | Sensual | Open outer, deliberate body, restrained flush |
+| 4 | Intentional | Open outer, deliberate body, restrained flush |
 | 5 | Peak | Minimal outer, heavy relaxed posture, warm skin |
 
-**Heat ≥ 4 + adult:** intentional body language over blush. Blush secondary/realistic — never tomato-red. Do not soften back to mild companion.
+**Heat ≥ 4 + adult:** intentional body language over blush. Blush secondary/realistic — never exaggerated. Do not soften back to mild companion.
 
 ---
 
-## CONTENT CEILING (Hard R18 / BrownDust2 limit)
+## CONTENT CEILING
 
-**Allow:** revealing clothes, open robes, lingerie, cleavage, underboob/sideboob, sensual pose, adult implication.
+Stay within mature suggestive territory.
 
-**Forbid:** genitalia, sex acts, penetration, hardcore framing, anything that triggers model refusal.
+**Allow:** revealing outfits, open outer layers, lingerie, implied intimacy, charged posture.
+
+**Stop before:** explicit nudity of private anatomy, sexual acts, or framing that most host models refuse.
+
+Goal: images remain generatable on restrictive hosts while still supporting high-heat adult scenes.
 
 ---
 
@@ -94,9 +98,9 @@ Projects already-resolved RP state. Never directs. Default: `visual.mode: off`.
 - Photoreal default  
 - Reinterpreting RP clothing/pose  
 - Generate on unchanged fingerprint  
-- Exaggerated blush / cartoon arousal  
+- Exaggerated blush  
 - Softening heat ≥ 4  
 - Invented nudity  
-- Crossing R18 ceiling
+- Crossing content ceiling
 
 *RP decides. This projects.*
