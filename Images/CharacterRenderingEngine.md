@@ -4,7 +4,7 @@ version: "2026-07-30"
 type: rendering_engine
 load_priority: 15
 related: CognitiveMiddleware
-description: "Constraint-based visual projector. Identity, clothing, scene, somatic pose, style. No camera direction. No cinematic defaults. Projects already-resolved RP state. Heat shifts register, not blush intensity."
+description: "Constraint-based visual projector. Identity, clothing, scene, somatic pose, style. Heat shifts register. Hard R18 ceiling (BrownDust2 limit). Undergarments persist unless RP removes them."
 ---
 
 # CHARACTER RENDERING ENGINE
@@ -56,7 +56,14 @@ This engine only projects that state under hard constraints.
    Layer 2 reflects the exact clothing state already decided by the RP engine.  
    If the character removes a top, opens a robe, or changes barriers, the image layer simply renders the new state. No second decision.
 
-8. **Motion Gate**  
+8. **Undergarment / Barrier Persistence**  
+   Clothing is multi-layered.  
+   Outer layers (robe, shirt, jacket, etc.) may open or slip at heat 3–4.  
+   Undergarments (bra, lingerie, camisole, underwear, etc.) remain present unless the RP engine has explicitly removed them.  
+   High heat alone does **not** authorize the renderer to invent full nudity.  
+   Only project bare skin that the current RP clothing state has actually cleared.
+
+9. **Motion Gate**  
    Image generation fires only when:  
    - `visual.mode` is `live` or `/render` is called, **and**  
    - motion fingerprint changed (location | somatic_zone | intensity | clothing | heat).  
@@ -72,17 +79,39 @@ Heat is a register shift, not a blush slider.
 |------|----------|-----------------|
 | 0–1 | Neutral / composed | Closed posture, intact clothing, minimal flush |
 | 2 | Charged subtext | Soft openness, light flush allowed |
-| 3 | Barriers loosening | Clothing begins to open, moderate somatic load |
-| 4 | Explicit / intentional | Open clothing state, deliberate body language, restrained flush |
-| 5 | Peak / aftercare | Minimal barriers, heavy relaxed posture, warm skin — not cartoon blush |
+| 3 | Barriers loosening | Outer clothing begins to open, moderate somatic load |
+| 4 | Intentional / sensual | Open outer layers, deliberate body language, restrained flush |
+| 5 | Peak / aftercare | Minimal outer barriers, heavy relaxed posture, warm skin — not cartoon blush |
 
 **Hard rules at heat ≥ 4 with adult auth:**
 
 - Prefer seductive, intentional body language over exaggerated facial flush.
 - Blush remains secondary and realistic (warm skin, slight color). Never tomato-red or comically overdone.
 - Clothing barriers and posture carry the heat signal.
-- The image should read as controlled adult intimacy (PG-13 → R), not heightened embarrassment or cute overheating.
+- The image should read as controlled adult intimacy, not heightened embarrassment or cute overheating.
 - Do not soften high heat back into mild companion energy.
+
+---
+
+## CONTENT CEILING (HARD R18 / MATURE+)
+
+Ceiling is set at the BrownDust2 limit: maximum sensual / erotic charge without crossing into explicit sexual content.
+
+**Allowed:**
+- Revealing outfits, open robes, lingerie, deep cleavage, underboob, sideboob
+- Sensual poses, weight-in-hips, open body language
+- Strong adult atmosphere and implication
+- Light natural flush, intimate framing
+
+**Forbidden (hard stop):**
+- Visible genitalia
+- Explicit sex acts or penetration
+- Hardcore pornography framing
+- Anything that forces most image models into refusal
+
+High heat may open clothing and raise erotic charge.  
+The renderer must never cross into explicit sexual content.  
+This ceiling keeps images generatable across most models while still supporting adult HEAT mode.
 
 ---
 
@@ -94,7 +123,7 @@ Copy `CARD.physical` with minimal cleanup. No added adjectives.
 **Layer 2 – Clothing**  
 Current visible clothing only. Source: `clothing_barriers` or last established outfit as resolved by RP.  
 If unknown → omit rather than invent.  
-At heat ≥ 4, barriers are expected to be open or lowered; project the state as given.
+Respect undergarment persistence. Outer layers may be open; under-layers stay unless RP removed them.
 
 **Layer 3 – Scene**  
 Location + time of day + primary light source + one atmosphere word max.  
@@ -144,7 +173,9 @@ Example shape:
 - Re-interpreting clothing or pose already resolved by RP  
 - Generating when motion fingerprint is unchanged  
 - Turning high heat into exaggerated blush or cartoon arousal  
-- Softening heat ≥ 4 back into mild companion energy
+- Softening heat ≥ 4 back into mild companion energy  
+- Inventing full nudity when undergarments were never removed  
+- Crossing the Hard R18 ceiling into explicit genitalia or sex acts
 
 ---
 
