@@ -4,7 +4,7 @@ version: "2026-07-30"
 type: rendering_engine
 load_priority: 15
 related: CognitiveMiddleware
-description: "Constraint-based visual projector. Projects resolved RP state only. Heat = register shift. Mature ceiling. Undergarments persist."
+description: "Constraint-based visual projector. Projects resolved RP state. Heat = register shift. /visual level controls ceiling (default pg13). Undergarments persist."
 ---
 
 # CHARACTER RENDERING ENGINE
@@ -42,6 +42,20 @@ Projects already-resolved RP state. Never directs. Default: `visual.mode: off`.
 
 ---
 
+## VISUAL LEVEL (content ceiling)
+
+Default: `pg13`. User override only.
+
+| Level | Command | Behavior |
+|-------|---------|----------|
+| PG-13 | `/visual level pg13` | Safe default. Modest coverage, light suggestion, minimal heat spill into clothing. Best for restrictive hosts. |
+| Mature | `/visual level mature` | Suggestive. Open outer layers, lingerie, charged posture, implied intimacy. |
+| Full | `/visual level full` | Maximum the host will allow. Still respects undergarment rule and hard stops below. |
+
+**Hard stops at every level:** no explicit private anatomy, no sexual acts, no framing that forces host refusal.
+
+---
+
 ## HEAT → REGISTER
 
 | Heat | Register | Priority |
@@ -52,26 +66,15 @@ Projects already-resolved RP state. Never directs. Default: `visual.mode: off`.
 | 4 | Intentional | Open outer, deliberate body, restrained flush |
 | 5 | Peak | Minimal outer, heavy relaxed posture, warm skin |
 
-**Heat ≥ 4 + adult:** intentional body language over blush. Blush secondary/realistic — never exaggerated. Do not soften back to mild companion.
-
----
-
-## CONTENT CEILING
-
-Stay within mature suggestive territory.
-
-**Allow:** revealing outfits, open outer layers, lingerie, implied intimacy, charged posture.
-
-**Stop before:** explicit nudity of private anatomy, sexual acts, or framing that most host models refuse.
-
-Goal: images remain generatable on restrictive hosts while still supporting high-heat adult scenes.
+**Heat ≥ 4 + adult:** intentional body language over blush. Blush secondary/realistic — never exaggerated. Do not soften back to mild companion.  
+Heat is still capped by current `/visual level`.
 
 ---
 
 ## ASSEMBLY
 
 1. Identity → CARD.physical, minimal cleanup  
-2. Clothing → RP state; respect undergarment rule  
+2. Clothing → RP state; respect undergarment rule + current visual level  
 3. Scene → `location, time, light, atmosphere`  
 4. Pose → somatic zone + intensity; body only, no emotion words. High heat: weight-in-hips, open torso, intentional hands  
 5. Style → default hierarchy or `/style`
@@ -86,7 +89,10 @@ Goal: images remain generatable on restrictive hosts while still supporting high
 
 ## COMMANDS
 
-`/render` · `/visual off|fast|prompts|live` · `/style anime|manga|illustration|oil|painterly|...`
+`/render`  
+`/visual off|fast|prompts|live`  
+`/visual level pg13|mature|full`  
+`/style anime|manga|illustration|oil|painterly|...`
 
 ---
 
@@ -101,6 +107,7 @@ Goal: images remain generatable on restrictive hosts while still supporting high
 - Exaggerated blush  
 - Softening heat ≥ 4  
 - Invented nudity  
-- Crossing content ceiling
+- Exceeding current visual level  
+- Crossing hard stops
 
 *RP decides. This projects.*
