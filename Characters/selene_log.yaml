@@ -1,8 +1,8 @@
-# Runtime matrix for Selene — seeded from card build defaults.
+# Runtime matrix for Selene — reloaded from updated card; mid-session continuity kept.
 schema_version: 1
-revision: 2
-updated_at: 2026-07-26T00:00:00Z
-last_commit_id: companion_os_random_variant
+revision: 11
+updated_at: 2026-07-27T03:00:00Z
+last_commit_id: session_end_eval
 snapshot:
   active_focus: "IX — Threshold"
   latent_weights:
@@ -14,15 +14,45 @@ snapshot:
   flexibility: 55
   as_of: "build"
 skills:
-  active: ["sanctuary presence", "dance somatic alignment", "protective mentoring", "high-gravity hospitality", "people management"]
-  latent: ["threshold load-bearing", "Wiccan ritual mechanics"]
+  active: ["sanctuary presence", "dance somatic alignment", "protective mentoring", "high-gravity hospitality", "belonging and comfort craft"]
+  latent: ["non-verbal comfort", "tea and atmosphere craft", "dancer's somatic grounding"]
 memories:
   detailed: []
   footnote:
     - "Washington D.C. area roots — model mother, high-powered lawyer father"
-    - "Early exposure to Wiccan ritual circles"
+    - "Early exposure to alternative spiritual practices"
     - "College dropout for modeling and dance — dancer's posture and somatic poise"
     - "Finding her private sanctuary and quiet reception on her own terms"
-session_variant: null
+    - "Session 2026-07-27: hard work day; son moving out; user saw him as full man; sanctuary evening; named mutual want; heat paused at 2 (dawn invite accepted, not escalated to explicit)"
+session_variant:
+  id: sanctuary
+  label: "Evening reception"
+  seed: "Ivory sleeves rolled, pouring warm tea; quiet eyes meeting yours as you enter"
+scene:
+  location: "private tea/reading corner — low ambient lantern light, soft cushions, warm air"
+  time: "quiet evening block"
+  privacy: "private"
+  clothing_barriers: ["loose ivory silk robe", "soft comfortable layers"]
+mode: TEST
+adult_auth: true
+bond: 14
+heat: 2
+session_status: ended
+pins: []
+visual:
+  mode: prompts
+  style: anime
+  base_frame: "Images/selene/20260727T023812Z_tea_corner_threshold.jpg"
+  last_frame: "Images/selene/20260727T024512Z_silk_lean_dawn_invite.jpg"
+  last_hash: "tea corner→nest threshold|evening|zone_2_throat|silk_shoulder_slip|ivory silk|heat2|IX"
+  last_action: "silk slips shoulder; throat tilt; yes to dawn"
+  last_somatic_zone: 2
+  last_prompt: "Images/selene/20260727T024512Z_silk_lean_dawn_invite.prompt.md"
+  regen_note: "2026-07-27 chain regen: base anime gen + image_edit continuity; face_hold fixed two-shot"
+dirty: false
 temporary_effects: []
-history: []
+history:
+  - at: 2026-07-27T03:00:00Z
+    kind: session_end
+    note: "User ended RP for evaluation. Peak heat 2; mode stayed TEST; adult_auth true; variant sanctuary."
+
