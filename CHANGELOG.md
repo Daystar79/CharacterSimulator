@@ -8,11 +8,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
-## [Unreleased] - 2026-07-26
+## [Unreleased] - 2026-07-29
+
+### Changed
+- **Character Renaming & Book Decoupling**: Renamed all 5 character cards and logs to fully decouple the ensemble from external book references:
+  - `Selene` → **Serena** (`serena.md` / `serena_log.yaml`)
+  - `Talia` → **Kira** (`kira.md` / `kira_log.yaml`)
+  - `Mara` → **Anya** (`anya.md` / `anya_log.yaml`)
+  - `Rue` → **Vera** (`vera.md` / `vera_log.yaml`)
+  - `Valen` → **Victor** (`victor.md` / `victor_log.yaml`)
+- **Cast Web Update**: Updated [`Relations.md`](Characters/Relations.md) cross-reference matrix to reflect the renamed cast and standalone relational dynamics.
+
+### Fixed
+- **Framework logic (runtime):** Variant preserve on `/load`; epistemic transient answers; L0 dirty export prompt; unified **bond → HEAT cap** table; `last_somatic_zone` on snapshot; hard-ban token extraction (not whole-line / overbroad word bans).
+- **Fresh cast logs:** Reset `anya`, `kira`, `serena`, `vera`, `victor` logs to clean `as_of: build` (empty memories/history, `session_variant: null`, no heat/bond/`adult_auth`/visual residue).
+- **Session variant policy:** Cast `re_roll_on: ["reset"]` only — cold `/load` preserves log variant.
+- **Serena ↔ Vera:** Serena card relationships + verbal shift for closed-circuit partner (was missing).
+- **Realm SSOT:** Single path `Framework/Psychology/realm_data.yaml`; removed divergent root `realm_data.yaml`.
+
+### Optimized & Streamlined
+- **Framework Optimization & Logic Reduction**: Streamlined core files for context density and strict logic boundaries.
+- **`CharacterRuntime.md` Streamlining**: Menu-first UX, full-card Create, epistemic, bond/HEAT, somatic rotation.
+- **`Images/CharacterRenderingEngine.md` Reduction**: Compressed pipeline while keeping stages, camera/pose maps, motion fingerprint, prompt cleanup.
+- **Character Card Standardization**: Renamed cast cards (`serena`, `kira`, `anya`, `vera`, `victor`) cleaned to template schema (session variants, history, knowledge, `somatic_zones`).
+- **Documentation & Scaffolds Clean-up**: `HOW_TO_CARD.md`, `README.md`, `Simulator/README.md` focused on actionable workflows.
+
 
 ### Added
-- **Talia card (performer OS)**: Expanded [`Characters/talia.md`](Characters/talia.md) + log — WV Orthodox → 19 cut → adult-creator routine; sexual delight; manga effect; core wound = fault-blindness (not Thomas-as-center). Optional cast history only.
-- **Random session variants**: Cards may define `session_variants` with `selection: random_on_load`. Runtime rolls shoot/chat/off (or card-defined modes) on `/load` and `/reset`; **no user picker**. Documented in [`CharacterRuntime.md`](CharacterRuntime.md). Talia ships three equal-weight modes.
+- **Menu-first UX**: Boot menu + plain language as primary controls; slash commands demoted to optional power aliases (not listed in first message).
+- **Full-card Create**: Guided step-by-step builder (not CM cast factory) outputs a **complete** card + empty log — name, age, physical, full voice, bias/focus mapping, **history_anchors**, **depth_of_knowledge**, optional scene/adult boundaries. Required path quality for companions / adult RP.
+- **Epistemic block restored (compact)**: Runtime binds knowledge to card anchors + depth_of_knowledge + MEMORY memories/skills/history; detailed / footnote / forgotten; skill tiers; no durable invented backstory mid-RP.
+- **Quick-start presets**: Ilyra / Cass / Nedra or one-liner tryout; prompts upgrade to Create for rich/adult play.
+- **Soft storage boot**: One-line storage status; full connector inventory only on demand.
+- **Beginner docs**: [`Characters/HOW_TO_CARD.md`](Characters/HOW_TO_CARD.md), [`Characters/_template_lite.md`](Characters/_template_lite.md); Characters + root README aligned to create/quick-start paths.
+
+### Added (earlier unreleased)
+- **Kira performer OS** (renamed from Talia lineage): Adult-creator routine; shoot/chat/off variants; Wound Absolver; optional Victor history.
+- **Random session variants**: `session_variants` with silent random selection; re-roll on reset by default; **no user picker**.
 - **Related-project pin**: Added [`dependency.yaml`](dependency.yaml) for CognitiveMiddleware as sibling drafting product (shared assets + pin), not a monorepo extract.
 - **Git remotes**: Linked `origin` to [Daystar79/CharacterSimulator](https://github.com/Daystar79/CharacterSimulator) and `upstream` to [Daystar79/CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware) (related compare remote).
 - **Project changelog**: This file (`CHANGELOG.md`) for CharacterSimulator-specific release notes.

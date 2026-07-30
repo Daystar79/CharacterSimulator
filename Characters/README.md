@@ -1,45 +1,41 @@
 # Characters Directory
 
-Named fictional people are the **unit of load**. Voice archetypes A–F are baseline registers (overridden by card idiolect). Psyche color comes from Focus + bias + [`realm_data.yaml`](../Framework/Psychology/realm_data.yaml).
+Named fictional people are the **unit of load** in CharacterSimulator.
 
-## Card vs log
+---
+
+## 🚀 Quick Start
+
+1. Paste root [`CharacterRuntime.md`](../CharacterRuntime.md) into chat.
+2. Select **[2] Create a character** for guided card building, or **[1] Quick-start** for immediate tryout.
+3. Play using menu numbers or plain language.
+
+**Complete Guide:** [`HOW_TO_CARD.md`](./HOW_TO_CARD.md)
+
+---
+
+## 📁 Directory Structure
 
 | File | Role |
 |:---|:---|
-| `Characters/[slug].md` | **Identity / build sheet** — voice, bias name, build-default weights, history anchors |
-| `Characters/[slug]_log.yaml` | **Runtime matrix** — snapshot + movement history; overrides card Focus/weights/somatic when present |
-| [`_log_template.yaml`](./_log_template.yaml) | Schema scaffold for new logs |
+| [`HOW_TO_CARD.md`](./HOW_TO_CARD.md) | Step-by-step card creation guide |
+| [`_template.md`](./_template.md) | **Full** card scaffold (build target) |
+| [`_template_lite.md`](./_template_lite.md) | Minimal card scaffold (quick tryout) |
+| [`_log_template.yaml`](./_log_template.yaml) | Runtime log scaffold |
+| [`Relations.md`](./Relations.md) | Archetype cast dynamics map |
+| `Characters/[slug].md` | Identity card (SSOT) |
+| `Characters/[slug]_log.yaml` | Runtime log (snapshot, memories, history) |
 
-Do **not** write movement deltas onto the card. Session evolution goes to the log (and, for novel drafting, to ledgers in [CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware)).
+---
 
-## Card format
+## 🔑 Card vs. Log Separation
 
-Character cards are **pure YAML** (`.md` extension for tooling compatibility):
+* **`Characters/[slug].md`:** Permanent identity — voice, bias, `history_anchors`, `depth_of_knowledge`, bans.
+* **`Characters/[slug]_log.yaml`:** Dynamic runtime state — snapshot, bond, heat, memories, skills, session history.
 
-- Entire card is a single YAML document between `---` fences
-- Structured fields: identity, psyche matrix, `transformation_weights` (**build defaults**), `depth_of_knowledge`, `voice`, `history_anchors`, `scene_seeds`
-- Prefer `is_historical` when relevant; set `age` + `canon_adult` for safety gates
-- One-line load protocol after the closing `---` (overlays `_log.yaml` snapshot when present)
+---
 
-## Chat load flow (this product)
+## 📜 License
 
-1. Paste root [`CharacterRuntime.md`](../CharacterRuntime.md).
-2. Load `Characters/[slug].md` (or paste pack) + overlay `[slug]_log.yaml` when present.
-3. Silent live state: Focus, Latents, Bias, Somatic, Voice.
-4. Optional: also load `realm_data.yaml` for full somatic tables (runtime embeds a short realm summary).
-
-## Files
-
-- [`_template.md`](./_template.md) — **public** card scaffold (CC BY-SA 4.0)
-- [`_log_template.yaml`](./_log_template.yaml) — **public** log schema (CC BY-SA 4.0)
-- [`README.md`](./README.md) — this file
-
-This repo ships **scaffolds only** — no sample cast. Named cards you add are author-private by default; see [LICENSE.md](../LICENSE.md) §3.
-
-## Adding a character
-
-1. Copy `_template.md` → `Characters/[slug].md`
-2. Copy `_log_template.yaml` → `Characters/[slug]_log.yaml`; seed snapshot from the card (`as_of: build`); leave `history: []`
-3. Fill card YAML: **age**, **canon_adult**, physical, cultural_bias, focus/latents, bias, voice, anchors, seeds
-4. Stress-test: paste `CharacterRuntime.md` → load card + log → `/mode test`
-5. For manuscript drafting of the same cast, use CognitiveMiddleware’s Framework + ledgers (separate product)
+* Public scaffolds (`_template*`, `_log_template`, HOW_TO_CARD, README): CC BY-SA 4.0 ([LICENSE.md](../LICENSE.md)).
+* Named character cards: Private by default; do not redistribute without permission.

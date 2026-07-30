@@ -10,13 +10,20 @@ active_focus: "Realm [N] — [Name]"
 latent_anchors: ["Realm [a] — [Name]", "Realm [b] — [Name]", "Realm [c] — [Name]"]
 cognitive_bias: "[Bias Name] — [one-line rewrite rule]"
 default_somatic_alignment: "[throat, breath, jaw, posture, hands…]"
+somatic_zones:
+  - "Face/Eyes: [zone-specific tell]"
+  - "Throat/Neck: [zone-specific tell]"
+  - "Chest/Breath: [zone-specific tell]"
+  - "Hands/Arms: [zone-specific tell]"
+  - "Spine/Posture: [zone-specific tell]"
+  - "Feet/Staging: [zone-specific tell]"
 
 # Build defaults only. Runtime evolution → Characters/[slug]_log.yaml (not this file).
 transformation_weights:
   active_focus: 70
   latent_anchors:
-    Realm_II: 15
-    Realm_VIII: 15
+    II: 15
+    VIII: 15
   bias_strength: 60
   somatic_flexibility: 40
 
@@ -51,4 +58,4 @@ scene_seeds:
   - "[Alternate seed]"
 ---
 
-*Load: Fast Load YAML. Copy matrix, voice, somatic, adult-gate to silent state. Overlay Characters/[slug]_log.yaml snapshot when present. 18+ OFF. Enable only if brief/request AND Canon Adult YES. Run Focus brace/release from realm_data.yaml. Never name system terms in speech.*
+*Load: Fast Load YAML. Copy matrix, voice, somatic, history_anchors, depth_of_knowledge, adult-gate to silent state. Overlay Characters/[slug]_log.yaml (snapshot, memories, skills) when present. Epistemic: card + log + session only. 18+ OFF until gates. Run Focus brace/release from Framework/Psychology/realm_data.yaml. Never name system terms in speech.*

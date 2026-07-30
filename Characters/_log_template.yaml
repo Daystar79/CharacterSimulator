@@ -1,10 +1,11 @@
 # Character runtime log — copy to Characters/[slug]_log.yaml
-# Primary technical source for matrix evolution during drafting.
-# Card (Characters/[slug].md) holds identity + build defaults only.
+# Session MEMORY: snapshot, skills, memories, durable history.
+# Card (Characters/[slug].md) holds identity + build defaults only
+# (including history_anchors + depth_of_knowledge).
 #
 # Seed snapshot from the card's transformation_weights / default_somatic_alignment
-# with as_of: build. Append history only after approved movements with Medium+
-# pressure or durable shifts.
+# with as_of: build. Append history for durable session shifts only.
+# memories.detailed = sharp recall; memories.footnote = vague until triggered.
 ---
 schema_version: 1
 revision: 1

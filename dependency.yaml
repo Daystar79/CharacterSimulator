@@ -42,6 +42,10 @@ shared_optional_sync:
   - Characters/_log_template.yaml
   - LICENSE.md                 # dual MIT + CC BY-SA pattern; adapt §3 for this repo
 
+# CharacterSimulator-only onboarding (not synced from CM character_builder_prompt):
+#   Characters/HOW_TO_CARD.md, Characters/_template_lite.md
+#   Create flow lives in CharacterRuntime.md (full card, no CM ledgers)
+
 not_in_this_repo:
   # Drafting stack stays in CognitiveMiddleware only.
   - Framework/Main.md

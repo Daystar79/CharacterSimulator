@@ -43,7 +43,7 @@ This license applies to open specifications and scaffolding, including:
 * `CharacterRuntime.md` (chat / RP engine)
 * `Images/CharacterRenderingEngine.md` and related visual specs
 * `Framework/` YAML and any open framework notes present in this repo (e.g. `Psychology/realm_data.yaml`)
-* `Characters/_template.md`, `Characters/_log_template.yaml`, and `Characters/README.md` (format documentation / scaffolds only)
+* `Characters/_template.md`, `Characters/_template_lite.md`, `Characters/_log_template.yaml`, `Characters/HOW_TO_CARD.md`, and `Characters/README.md` (format documentation / scaffolds only)
 * Project `README.md`, `CHANGELOG.md`, and other top-level documentation not listed in §3
 
 It does **not** apply to materials listed in §3. Drafting manuals, linter, and deploy tooling live in CognitiveMiddleware under that project’s license text.
