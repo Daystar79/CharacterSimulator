@@ -79,9 +79,9 @@ Only rows with an existing file and `ENABLED` status load. Downstream apps **add
 
 | Module Name | Path | Status | Hooks | Compatibility |
 |:---|:---|:---|:---|:---|
-| *(None shipped in core)* | — | — | — | Core runs fully with zero ENABLED modules |
+| **Erotica Protocol** | `Framework/Mechanics/erotica.md` | `DYNAMIC` *(ENABLED on `/adult on`)* | `post_vector`, `app_render` | Gated by `adult_auth` + `canon_adult` + `age >= 18` + bond caps |
 
-*Note: Downstream projects register local modules in their deployed copy of this registry. The core framework ships with an empty active registry.*
+*Note: Downstream projects register local modules in their deployed copy of this registry. Core pipeline runs fully when modules are DISABLED or gated out.*
 
 ### How a downstream app adds a module
 

@@ -1,167 +1,145 @@
-# Project Scope and Objectives: CognitiveMiddleware
+# Project Scope, Architecture & Execution Outline — CharacterSimulator
 
-**File Version:** 2.0.0 (Authoritative Product Alignment)  
-**Target Audience:** Autonomous AI Agents, LLM Orchestrators, and Downstream Integration Tools  
-**Repository Root:** `file:///mnt/Books/CognitiveMiddleware`  
-
----
-
-## 1. Executive Summary & Product Boundaries
-
-**CognitiveMiddleware** is an invisible, file-native psychological and physical character runtime that emulates how a human mind and body respond under pressure.
-
-It separates **character psychology and somatic simulation** from **downstream prose rendering and presentation UI**. System mechanics, psychological jargon, and internal scoring run **100% off-page** and never leak into manuscript prose or roleplay dialogue.
-
-### Canonical Product Definitions
-
-- **Product:** Invisible psych/physical character runtime; apps only render.
-- **Modules:** Downstream injectors into the cognitive loop; optional; subordinate.
-- **Sex in core:** Interpretation through the pipeline only — not craft, not modes.
-- **Switches:** Ops and host policy only — not personality.
-
-### What CognitiveMiddleware IS NOT
-
-- **NOT** a prose style pack.
-- **NOT** an adult writing kit or erotica framework.
-- **NOT** a plugin marketplace of genre content.
-- **NOT** a set of "modes" that turn human behavior on or off.
+**Product:** CharacterSimulator  
+**Version:** 2.1.0 (Authoritative Product Alignment)  
+**System Foundation:** Cognitive Middleware (Cognitive Pipeline v2.1)  
+**Target Audience:** AI Agents, LLM Chat Orchestrators, Character Creators, and Roleplay Participants  
+**Workspace Root:** `./`  
 
 ---
 
-## 2. Two-Tier Architecture
+## 1. Executive Summary & Product Mission
 
-| Tier | Owns | Core Files |
-|---|---|---|
-| **Core Engine** | Mind-body simulation → intent vector (`Feels`, `Thinks`, `Says`, `Does`) | [Framework/CognitivePipeline.md](file:///mnt/Books/CognitiveMiddleware/Framework/CognitivePipeline.md), `realm_data.yaml`, state schema, [Rules_Index.md](file:///mnt/Books/CognitiveMiddleware/Framework/Rules_Index.md) |
-| **Application Shells** | How intent vector is rendered into text or UI | [Framework/Main.md](file:///mnt/Books/CognitiveMiddleware/Framework/Main.md) (manuscript), [Simulator/CharacterRuntime.md](file:///mnt/Books/CognitiveMiddleware/Simulator/CharacterRuntime.md) (RP chat) |
+**CharacterSimulator** is a standalone, menu-first character simulation and roleplay host application powered by the **Cognitive Middleware** neurobiological engine.
+
+It provides a zero-friction, natural-language interactive roleplay environment where users can:
+1. **Quick-Start** preset characters in under a minute.
+2. **Create Custom Characters** via a guided plain-language interview that generates full-spec identity cards and machine state objects.
+3. **Derive Canon Characters** from documented public sources with strict physical accuracy locks and zero invention of blank lore.
+4. **Simulate Realistic Human Behavior** driven by an invisible mind-body pipeline, dual-aspect Wound ↔ Gift psychology, multi-zone somatic cascades, epistemic memory gating, and switchless state persistence.
+
+---
+
+## 2. Architecture & Layer Separation
+
+CharacterSimulator separates the **interaction host / chat UI layer** from the **cognitive simulation engine core**:
 
 ```
-                         Cognitive Pipeline
-             (Framework/CognitivePipeline.md)
-   Human Mind-Body Emulation → Feels / Thinks / Says / Does
-                                 │
-           ┌─────────────────────┴─────────────────────┐
-           ▼                                           ▼
-   Book Writing Layer                           Roleplay Engine
-   (Framework/Main.md)                     (Simulator/CharacterRuntime.md)
- Novel Manuscript Prose                          Interactive Chat RP
+                              👤 HUMAN PLAYER
+                                     │
+                                     ▼
+ 💬 HOST & UI LAYER               CharacterRuntime.md
+   ├── Menu UX & Plain Language    ├── Storage Boot (L0–L3) & OOC Parser
+   ├── Card Authority (SSOT)       └── JSON Machine State Engine
+                                     │
+                                     ▼
+ 🧠 COGNITIVE PIPELINE CORE       Framework/CognitivePipeline.md
+   ├── Nervous System (Z1–Z6)      ├── Subconscious Prism (Wound ↔ Gift)
+   ├── Raw Affective Impulse       └── Priority Arbitration
+                                     │
+                                     ▼
+ 🔌 MODULES EXTENSION API         Framework/Modules.md
+   ├── pre_somatic / affect_filter ├── post_vector (Erotica Protocol)
+   └── pre_arbitration / app_render└── on_commit (Durable Log Commit)
+                                     │
+                                     ▼
+ 🗣️ DEPICTION & VISUAL LAYER      Off-Page RP Prose & Visual Pass
+   ├── Narrative RP Prose          └── Images/CharacterRenderingEngine.md
+```
+
+### Layer Responsibilities
+| System Layer | Primary Responsibilities | Core Files |
+|:---|:---|:---|
+| **Host & UI Layer** | Menu UX, plain language intent parsing, slash command aliases, storage boot (L0–L3), JSON machine state management, chat hygiene. | [`CharacterRuntime.md`](CharacterRuntime.md) |
+| **Cognitive Pipeline** | Neurobiological mind-body simulation, visceral reaction, raw affect, prism interpretation, priority arbitration, 4-channel vector (`Feels`/`Thinks`/`Says`/`Does`). | [`Framework/CognitivePipeline.md`](Framework/CognitivePipeline.md), [`Framework/Psychology/realm_data.yaml`](Framework/Psychology/realm_data.yaml) |
+| **Extension API** | Domain injectors at defined loop hooks (`pre_somatic`, `affect_filter`, `pre_arbitration`, `post_vector`, `app_render`, `on_commit`). | [`Framework/Modules.md`](Framework/Modules.md), [`Framework/Mechanics/erotica.md`](Framework/Mechanics/erotica.md) |
+| **Card & State Storage** | Dual-file storage: Immutable Build Identity Card + High-speed Machine Runtime State & Durable Log. | [`Characters/[slug].json`](Characters/shinano.json), [`Characters/[slug]_state.json`](Characters/Shinano_state.json) |
+| **Visual Rendering** | Motion-driven visual stills, PG-13 / Mature content ceilings, zero RP turn latency by default (`visual_mode: off`). | [`Images/CharacterRenderingEngine.md`](Images/CharacterRenderingEngine.md) |
+
+---
+
+## 3. Product Modes & User Workflows
+
+CharacterSimulator provides four primary entry workflows:
+
+### Workflow [1]: Quick-Start
+- **Target:** Users wanting immediate roleplay with zero setup homework.
+- **Mechanism:** Select from curated presets (e.g., Ilyra, Cass, Nedra). Automatically instantiates a playable identity card and machine state.
+
+### Workflow [2]: Guided Create Character
+- **Target:** Original Character (OC) builders.
+- **Mechanism:** Step-by-step interview covering Name, Age, Look/Motion, Voice & Hard Bans, Wound & Gift, History Anchors, Knowledge Depth, and Adult Limits.
+- **Output:** Silently writes [`Characters/[slug].json`](Characters/_template.json) (Card) and [`Characters/[slug]_state.json`](Characters/_log_template.yaml) (Machine State).
+
+### Workflow [3]: Derive Canon Card
+- **Target:** Existing fictional characters (anime, games, books, lore).
+- **Mechanism:** Fetches documented public canon text (wiki, official profiles) as the Single Source of Truth (SSOT).
+- **Locks:** Locks physical appearance to source (no beautification or body drift), bounds knowledge to canon role, and leaves missing fields blank rather than inventing lore.
+
+### Workflow [4]: Load / Paste Pack
+- **Target:** Power users loading existing character files or pasting portable packs.
+- **Mechanism:** Reads identity card and overlays durable log snapshot.
+
+---
+
+## 4. Operational Invariants & Safety
+
+1. **Absolute Age Gate:** Characters with `canon_adult: false` or age < 18 are **permanently barred** from intimate RP or HEAT mode. Minors are never sexual subjects.
+2. **Triple Adult Authorization Gate:** HEAT mode requires:
+   - User attestation (`adult_auth: true` via `/adult on` or *"I'm 18+"*).
+   - Character card eligibility (`canon_adult: true` AND age ≥ 18).
+   - Live bond score cap (gated by the authoritative bond friction table).
+3. **Off-Page Matrix Invariant:** System mechanics, realm numbers, debt-ledger labels, and psychological jargon run 100% off-page and MUST NEVER leak into character dialogue or narrative RP prose.
+4. **Hard Ban Supremacy:** Quoted forbidden tokens/phrases in character `hard_bans` override all other voice color rules.
+5. **Switchless State Persistence:** Live state updates every turn tick in working memory; durable evolutions commit automatically to [`Characters/[slug]_log.yaml`](Characters/_log_template.yaml) on scene breaks.
+
+---
+
+## 5. Directory & File Map Outline
+
+```
+CharacterSimulator/
+├── CharacterRuntime.md                  # Main drop-in host runtime prompt spec
+├── PROJECT_SCOPE.md                     # This project scope & architecture outline
+├── README.md                            # Product overview & quick-start guide
+├── CHANGELOG.md                         # Version history & sync record
+├── DISCLAIMER.md                        # Compliance, ToS & safety disclaimers
+├── LICENSE.md                           # License agreements
+├── Framework/
+│   ├── CognitivePipeline.md             # Core mind-body simulation pipeline spec
+│   ├── Modules.md                       # Extension API & loop hook registry
+│   ├── Rules_Index.md                   # Hard bans & off-page matrix rules
+│   ├── Main.md                          # Manuscript drafting specification
+│   ├── source_changes.md                # Framework source change history
+│   ├── linter.py                        # Automated prose linter for system leaks
+│   ├── Mechanics/
+│   │   ├── humanity.md                  # Biological timing & human behavior rules
+│   │   ├── prose.md                     # Selective prose style selector
+│   │   ├── voices.md                    # Spoken vs written syntactical voice engine
+│   │   └── erotica.md                   # Intimacy scene craft & adult gating module
+│   ├── Psychology/
+│   │   └── realm_data.yaml              # 10-realm somatic body catalog (Z1–Z6)
+│   └── Schemas/
+│       └── psychosomatic_state.json     # Ephemeral live state JSON schema
+├── Characters/
+│   ├── README.md                        # Character card & log file format documentation
+│   ├── HOW_TO_CARD.md                   # Card creation guide (Create vs Derive)
+│   ├── _template.json                   # Standard JSON identity card scaffold
+│   ├── _log_template.yaml               # Standard YAML durable log scaffold
+│   ├── Shinano.md / shinano.json        # Demo character identity cards
+│   └── Shinano_state.json               # Demo character machine state object
+├── Simulator/
+│   ├── README.md                        # Simulator folder guide & scope notes
+│   └── CharacterRuntime.md              # Upstream host reference specification
+├── Images/
+│   └── CharacterRenderingEngine.md      # Visual rendering pipeline & prompt engine
+└── scripts/
+    ├── run.py                           # Cross-platform CLI runner
+    ├── validate_state.py                # JSON state validator
+    ├── unix/                            # Unix shell helper scripts (lint, deploy)
+    └── windows/                         # Windows PowerShell helper scripts
 ```
 
 ---
 
-## 3. Core Simulation Principles & Invariants
-
-### 3.1 Body Before Insight
-Autonomic nervous system reactions and multi-zone somatic cascades (Z1–Z6) complete **before** labeled cognition or dialogue. The 4-channel vector (`Feels` → `Thinks` → `Says` → `Does`) preserves this neurobiological order in every tick.
-
-### 3.2 Dual-Aspect Psyche
-Characters operate on paired **Wound ↔ Gift** vectors rather than trauma-only engines:
-- **Defensive Path (`DEFENSIVE_ACTIVE`):** Triggered when scene pressure activates the core wound/bias.
-- **Generative Path (`GENERATIVE_ACTIVE`):** Engaged when trust, safety, or flow activates virtue lenses and creative capacity.
-
-### 3.3 Dynamic Priority Arbitration
-Competing internal drives arbitrate dynamically based on salience score:
-$$\text{Salience} = (\text{Internal Intensity}) \times (\text{Context Multiplier}) \times (\text{Character Baseline Weight})$$
-The winning drive directs primary dialogue (`Says`) and action (`Does`), while secondary drives remain as subtext, monologue friction, or subtle somatic tells.
-
-### 3.4 Unified 2-Tier State Model
-State is managed across two persistence tiers:
-1. **Immutable Build Identity (`Characters/[slug].md`):** Fixed defaults, voice definitions, baseline drive weights, wound/gift descriptions.
-2. **Durable Runtime Log (`Characters/[slug]_log.yaml`):** Persistent evolution across movements/sessions (focus, weights, skills, detailed memories, relational baselines). Overrides card defaults.
-3. **Live Ephemeral Snapshot (`Framework/Schemas/psychosomatic_state.json`):** Per-tick mind-body state (autonomic scales 0–100, active affect, relational vectors, salience score, 4-channel vector). Rewritten every tick.
-
----
-
-## 4. Intimate & Sexual Stimulus in Core
-
-Sex is **not a special subsystem or operational mode**. It is a standard class of stimulus processed through the normal pipeline:
-
-1. **Nervous System (Visceral/Zones):** Autonomic arousal, pulse, skin temperature, Z1–Z6 tells.
-2. **Raw Affect:** Immediate visceral impulse (attraction, shock, discomfort, warmth, pull).
-3. **Subconscious Prism:** Filtered through upbringing, memory, culture, and wound/gift matrix (e.g., sex as debt, vulnerability, control, caretaking, threat, sacred connection, escape, or curiosity).
-4. **Priority Arbitration:** Drive salience evaluation determining whether desire wins, freezes, deflects, approaches, or withdraws.
-5. **4-Channel Vector:** Emits character **stance and intent** (`Feels`, `Thinks`, `Says`, `Does`).
-
-### The One-Line North Star Rule for Sex
-> **The pipeline may conclude how a person relates to sex. Nothing in this repo should teach the model how to stage sex.**
-
-- **Emulation (Core):** Did they want it? How do they interpret it? Continuous and switchless. Always runs for adult characters when stimulus exists.
-- **Depiction Policy (Host / Downstream):** May we print explicit sex in this session/book? Optional renderer ceiling (SFW / fade-to-black / explicit). Must **never** rewrite whether the human wanted it.
-
-### Data Invariants
-- `canon_adult` and `age` are identity/ToS data invariants (minors are never sexual subjects). This is a safety boundary, not a behavior toggle or mood switch.
-
----
-
-## 5. Extension Registry & Module System
-
-[Framework/Modules.md](file:///mnt/Books/CognitiveMiddleware/Framework/Modules.md) is the explicit extension API for downstream applications (book folders, tools, UIs) to inject behavior into the cognitive loop without forking the pipeline:
-
-- **Loop Hooks:** Subordinate injectors at fixed points (`pre_somatic`, `affect_filter`, `pre_arbitration`, `post_vector`, `app_render`, `on_commit`).
-- **Core Supremacy:** `Rules_Index.md`, pipeline sequence, card/log identity, and age invariants always win. Conflicting module instructions are silently ignored.
-- **Empty Registry:** An empty active module list is completely valid. The core engine runs fully with zero `ENABLED` modules.
-- **Downstream Ownership:** Downstream books register local modules in their copy of `Modules.md`. No genre erotica craft is shipped as core framework surface.
-
----
-
-## 6. Design Principle: Switchless & Automated Operations
-
-If the goal is to emulate a human, **character behavior must not require switches, and state persistence must be automated**:
-
-- **Switchless Psychology:** Humans do not have adult modes or mood switches; they have bodies, histories, bonds, and situations. Character psychology operates 100% switchlessly through continuous state math.
-- **Automated Hands-Free Persistence:** State saving is completely automated. Live snapshots update every turn tick, and durable evolutions automatically merge into `_log.yaml` on scene breaks, movement ends, or session close per the pipeline commit protocol. Manual `/save` commands are eliminated.
-
-| Automated / Developer Inspection Only | Dropped From Character Runtime |
-|---|---|
-| Automated durable log commit on scene close | Manual `/save` or `/adult on` commands |
-| Automated live tick state snapshots | HEAT / COMPANION behavioral modes |
-| Optional `/state` OOC for dev debugging | "Enable erotica module or they won't act sexual" |
-
----
-
-## 7. System Components & File Map
-
-| Path | Purpose | Downstream Impact |
-|---|---|---|
-| [Framework/CognitivePipeline.md](file:///mnt/Books/CognitiveMiddleware/Framework/CognitivePipeline.md) | Core psych/physical simulation engine specification. | Required execution spec for all mind-body ticks. |
-| [Framework/Main.md](file:///mnt/Books/CognitiveMiddleware/Framework/Main.md) | Manuscript drafting engine specification & style lock rules. | Defines drafting session boot, ledger checks, anti-synthesis rules. |
-| [Framework/Modules.md](file:///mnt/Books/CognitiveMiddleware/Framework/Modules.md) | Extension registry & loop hook specification. | Downstream module registration and core supremacy rules. |
-| [Framework/Rules_Index.md](file:///mnt/Books/CognitiveMiddleware/Framework/Rules_Index.md) | Hard bans catalog and off-page matrix rules. | Enforced by AI agents and linter on all rendered text. |
-| [Framework/Psychology/realm_data.yaml](file:///mnt/Books/CognitiveMiddleware/Framework/Psychology/realm_data.yaml) | 10-realm somatic body catalog (micro, moderate, macro, release, vocal). | Data source for physical tells in `Feels` and `Does`. |
-| [Framework/Schemas/psychosomatic_state.json](file:///mnt/Books/CognitiveMiddleware/Framework/Schemas/psychosomatic_state.json) | Ephemeral live state schema. | Used by `scripts/validate_state.py` to validate state structure. |
-| [Simulator/CharacterRuntime.md](file:///mnt/Books/CognitiveMiddleware/Simulator/CharacterRuntime.md) | Standalone interactive roleplay host engine & OOC parser. | Standard chat host for interactive RP sessions. |
-| [Framework/linter.py](file:///mnt/Books/CognitiveMiddleware/Framework/linter.py) | Automated prose linter for system leaks and banned phrases. | CI/CD and pre-commit check for manuscript compliance. |
-| [scripts/validate_state.py](file:///mnt/Books/CognitiveMiddleware/scripts/validate_state.py) | State structure & range validator. | Validates character log and live state files. |
-| [deploy_framework.py](file:///mnt/Books/CognitiveMiddleware/deploy_framework.py) | Framework deployment & synchronization script. | Copies framework scaffolding into downstream book projects. |
-
----
-
-## 8. Downstream Projects & Integration Contract
-
-### 8.1 Context Load Budget
-AI agents operating in downstream projects must follow the context loading protocol:
-
-```
-Mandatory Session Boot Stack (~2,760 - 3,500 words):
-1. Framework/Main.md
-2. Framework/CognitivePipeline.md
-3. Framework/Modules.md (Check ENABLED registry status)
-4. Framework/Rules_Index.md
-5. Framework/Psychology/realm_data.yaml
-6. Characters/[slug].md (Card)
-7. Characters/[slug]_log.yaml (Log overlay)
-8. Framework/Continuity_Ledger.md
-```
-
-### 8.2 Hard Downstream Invariants for AI Agents
-
-1. **Zero System Leaks (Off-Page Contract):** Agents MUST NEVER write framework terminology into draft prose or RP responses.
-2. **Durable vs Live State Isolation:** Card is immutable build identity; Log is durable evolution; Live snapshot is per-tick ephemeral state.
-3. **Age Data Invariant:** Minors (`canon_adult: false` or age < 18) are never sexual subjects.
-4. **Style Locks & Anti-Synthesis:** Paragraphs close on sensory fact, raw action, or unanswered dialogue—NEVER interpretive summary.
-5. **Module Subordination:** Core invariants always supersede module rules.
-6. **Automated Audit Requirement:** Downstream prose must pass [Framework/linter.py](file:///mnt/Books/CognitiveMiddleware/Framework/linter.py) with 0 critical leaks.
-
----
-
-*This document serves as the authoritative scope and product alignment specification for CognitiveMiddleware.*
+*This document serves as the authoritative project scope, architecture, and file layout outline for CharacterSimulator.*
