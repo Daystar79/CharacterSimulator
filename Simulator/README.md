@@ -1,22 +1,35 @@
-# Simulator Directory
+# Simulator (optional)
 
-The primary chat engine for CharacterSimulator is located at the root of the repository:
+**CognitiveMiddleware’s product core** is the Cognitive Pipeline (psychological / physical character runtime) plus the book-writing layer under `Framework/`.
 
-👉 **[`../CharacterRuntime.md`](../CharacterRuntime.md)** — Paste this entire file into any LLM chat.
+This folder is a **side tool**: live chat against a card so you can stress-test behaviour before writing — or run private RP sessions. It ships because the same pipeline is useful off-manuscript; it is not the only product surface.
 
----
+## CharacterRuntime.md
 
-## 📌 Product Boundaries
+Drop-in host. Paste into a chat (no git required). Queries `Framework/CognitivePipeline.md` each turn.
 
-| Goal | Product / Location |
-|:---|:---|
-| Live RP, card stress-testing, private sessions | **CharacterSimulator** (this repository) |
-| Long-form novel drafting, ledgers, linter, deploy | **[CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware)** |
+| Control | Intent |
+|---|---|
+| Default play | Character fidelity from card + log + pipeline (switchless) |
+| `/state` | Optional OOC inspect of live psychosomatic snapshot (debug only) |
+| `/visual` / `/render` | Optional image layer (off by default) |
 
----
+**Persistence:** Live snapshots update each tick; durable merges into `_log.yaml` happen automatically on scene break / medium+ shift / session close. No behavioral “adult mode” or manual save required for psychology.
 
-## 🛠️ Modes & Visuals
+**Private directory:** `Private/` is git-ignored and not deployed. Do not commit private session files.
 
-- **Modes:** `TEST` (fidelity checks), `COMPANION` (relationship energy), `HEAT` (explicit adult RP via `/adult on`).
-- **Visuals:** Decoupled visual rendering pipeline documented in [`../Images/CharacterRenderingEngine.md`](../Images/CharacterRenderingEngine.md).
-- **Disclaimer:** Legal and safety terms in [`../DISCLAIMER.md`](../DISCLAIMER.md).
+**Image layer:** `Images/CharacterRenderingEngine.md` is **off by default**. Force a frame with `/render`, or toggle with `/visual off|fast|prompts|live`.
+
+## When to use what
+
+| Goal | Use |
+|---|---|
+| Write a novel / movement | `Framework/Main.md` + pipeline + Rules + realm_data + cards + logs |
+| Check a card in chat | This simulator |
+| Private live RP | This simulator · keep packs private · age invariants always apply |
+
+## License & disclaimers
+
+CC BY-SA 4.0 for the runtime text (root [LICENSE.md](../LICENSE.md)). Your packs and private sessions are your data.
+
+**Compliance & 18+:** Intimate modeling is restricted to adult users (18+) and canonically adult fictional characters (`canon_adult: true`, age ≥ 18). Minors are never sexual subjects. See root **[DISCLAIMER.md](../DISCLAIMER.md)**.
