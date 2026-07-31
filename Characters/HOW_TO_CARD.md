@@ -44,13 +44,19 @@ For Shinano, Deedlit, game/anime/book characters, etc.
 
 ---
 
+## Dual-File JSON Architecture
+
+Every character builder pass (Create or Derive) outputs two linked JSON files (or Markdown/YAML equivalent):
+
+| File | Format | Primary Role | Target Audience |
+|:---|:---|:---|:---|
+| **`Characters/[slug].json`** | **JSON** | Permanent Identity, Lore, Voice, Physical, History Anchors | **Human Review & Card Storage** |
+| **`Characters/[slug]_state.json`** | **JSON** | Machine Runtime State (bond, state, goals, somatics, epistemic memory) | **LLM Engine Execution** |
+
+---
+
 ## Hand-Editing (Power Users)
 
-1. Copy [`_template.md`](./_template.md) → `Characters/[slug].md`.
-2. Copy [`_log_template.yaml`](./_log_template.yaml) → `Characters/[slug]_log.yaml`.
+1. Copy [`_template.json`](./_template.json) → `Characters/[slug].json` (JSON card).
+2. Copy [`_log_template.yaml`](./_log_template.yaml) → `Characters/[slug]_state.json` (JSON machine state).
 3. Fill fields; stress-test in mode **TEST**.
-
-| File | Role |
-|:---|:---|
-| `Characters/[slug].md` | Permanent identity |
-| `Characters/[slug]_log.yaml` | Runtime state |
