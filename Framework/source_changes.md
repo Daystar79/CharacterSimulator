@@ -1,6 +1,15 @@
 # Source Changes — CognitiveMiddleware
 *Changes made from original source material during this chat*
 
+## 2026-08-07 — Product name: Simulacra — **applied** (agent)
+
+- User-facing product name for the desktop host set to **Simulacra** (window title, splash, toolbar, TUI rule, READMEs). Code projects remain `CharacterSimulator.*`.
+
+## 2026-08-07 — Docs + product naming (desktop host) — **applied** (agent)
+
+- **README.md / PROJECT_SCOPE.md:** Documented split card fields; clarified runtime vs sibling desktop roleplay host (CharacterSimulator.UI / Simulacra).
+- **CharacterSimulator.UI:** Root README; AGENTS + Logic README theme/card notes.
+
 ## 2026-08-07 — Separate personality / behavior / physical on cards — **applied** (agent)
 
 - **Problem:** UI and loaders treated personality, how they act, and physical appearance as one combined description.

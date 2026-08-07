@@ -53,8 +53,9 @@ CharacterSimulator separates the **interaction host / chat UI layer** from the *
 | **Host & UI Layer** | Menu UX, plain language intent parsing, slash command aliases, storage boot (L0–L3), JSON machine state management, chat hygiene. | [`CharacterRuntime.md`](CharacterRuntime.md) |
 | **Cognitive Pipeline** | Neurobiological mind-body simulation, visceral reaction, raw affect, prism interpretation, priority arbitration, 4-channel vector (`Feels`/`Thinks`/`Says`/`Does`). | [`Framework/CognitivePipeline.md`](Framework/CognitivePipeline.md), [`Framework/Psychology/realm_data.yaml`](Framework/Psychology/realm_data.yaml) |
 | **Extension API** | Domain injectors at defined loop hooks (`pre_somatic`, `affect_filter`, `pre_arbitration`, `post_vector`, `app_render`, `on_commit`). | [`Framework/Modules.md`](Framework/Modules.md), [`Framework/Mechanics/erotica.md`](Framework/Mechanics/erotica.md) |
-| **Card & State Storage** | Dual-file storage: Immutable Build Identity Card + High-speed Machine Runtime State & Durable Log. | [`Characters/[slug].json`](Characters/shinano.json), [`Characters/[slug]_state.json`](Characters/Shinano_state.json) |
-| **Visual Rendering** | Motion-driven visual stills, PG-13 / Mature content ceilings, zero RP turn latency by default (`visual_mode: off`). | [`Images/CharacterRenderingEngine.md`](Images/CharacterRenderingEngine.md) |
+| **Card & State Storage** | Dual-file storage: Immutable Build Identity Card (`physical`, `character_style`, `personality`, `behavior`, voice, psyche, …) + Machine Runtime State & Durable Log. | [`Characters/_template.json`](Characters/_template.json), [`Characters/HOW_TO_CARD.md`](Characters/HOW_TO_CARD.md) |
+| **Visual Rendering** | Motion-driven visual stills from card physical + style / RP clothing; PG-13 / Mature ceilings; `visual_mode: off` by default. | [`Images/CharacterRenderingEngine.md`](Images/CharacterRenderingEngine.md) |
+| **Desktop host (sibling)** | **Simulacra** — Photino/Blazor roleplay host: sessions, themes, portraits, SQLite profiles. | Repo **CharacterSimulator.UI** (product name Simulacra) |
 
 ---
 
@@ -68,13 +69,14 @@ CharacterSimulator provides four primary entry workflows:
 
 ### Workflow [2]: Guided Create Character
 - **Target:** Original Character (OC) builders.
-- **Mechanism:** Step-by-step interview covering Name, Age, Look/Motion, Voice & Hard Bans, Wound & Gift, History Anchors, Knowledge Depth, and Adult Limits.
-- **Output:** Silently writes [`Characters/[slug].json`](Characters/_template.json) (Card) and [`Characters/[slug]_state.json`](Characters/_log_template.yaml) (Machine State).
+- **Mechanism:** Step-by-step interview covering Name, Age, **Look/Motion (`physical`)**, **Style (`character_style`)**, **Personality**, **Behavior**, Hobbies, Voice & Hard Bans, Wound & Gift, History Anchors, Knowledge Depth, and Adult Limits.
+- **Separation rule:** Personality, behavior, and physical are never collapsed into one free-text description.
+- **Output:** Silently writes [`Characters/[slug].json`](Characters/_template.json) (Card) and machine state / durable log from templates.
 
 ### Workflow [3]: Derive Canon Card
 - **Target:** Existing fictional characters (anime, games, books, lore).
 - **Mechanism:** Fetches documented public canon text (wiki, official profiles) as the Single Source of Truth (SSOT).
-- **Locks:** Locks physical appearance to source (no beautification or body drift), bounds knowledge to canon role, and leaves missing fields blank rather than inventing lore.
+- **Locks:** Locks **physical** (and documented **character_style**) to source — no beautification or body drift; bounds knowledge/hobbies to canon; leaves blank fields blank rather than inventing lore.
 
 ### Workflow [4]: Load / Paste Pack
 - **Target:** Power users loading existing character files or pasting portable packs.
