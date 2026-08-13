@@ -1,28 +1,6 @@
 # Source Changes — CognitiveMiddleware
 *Changes made from original source material during this chat*
 
-## 2026-08-07 — Product name: Simulacra — **applied** (agent)
-
-- User-facing product name for the desktop host set to **Simulacra** (window title, splash, toolbar, TUI rule, READMEs). Code projects remain `CharacterSimulator.*`.
-
-## 2026-08-07 — Docs + product naming (desktop host) — **applied** (agent)
-
-- **README.md / PROJECT_SCOPE.md:** Documented split card fields; clarified runtime vs sibling desktop roleplay host (CharacterSimulator.UI / Simulacra).
-- **CharacterSimulator.UI:** Root README; AGENTS + Logic README theme/card notes.
-
-## 2026-08-07 — Separate personality / behavior / physical on cards — **applied** (agent)
-
-- **Problem:** UI and loaders treated personality, how they act, and physical appearance as one combined description.
-- **Card schema:** Added top-level `personality` and `behavior` fields (plain English). Kept `physical` (body) and `character_style` (dress) separate. Documented hard split in HOW_TO_CARD / README / CharacterRuntime / builder prompt.
-- **CharacterSimulator.UI:** Profile panel shows Personality, Behavior, Physical, Clothing as four fields; catalog/loader/derive/prompt builders no longer collapse them.
-
-## 2026-08-07 — Card imaging fields: structured physical + character_style + hobbies — **applied** (agent)
-
-- **Problem:** Cards used a single free-text `physical` string that mixed body, wardrobe, and scent; imaging UI / CharacterRenderingEngine needed stable identity vs default dress separation.
-- **Characters/_template.md**, **_template.json**, **_template_lite.md:** Expanded `physical` into structured imaging keys; added `character_style` (dress/accessories defaults) and `hobbies`.
-- **Characters/HOW_TO_CARD.md**, **README.md**, **Framework/Prompts/character_builder_prompt.md**, **CharacterRuntime.md:** Create/Derive steps and schema docs updated; legacy string `physical` remains accepted.
-- **Images/CharacterRenderingEngine.md:** Identity from structured `physical`; clothing falls back to `character_style` when RP outfit unset; art medium stays runtime `/style` (not card dress style).
-
 ## 2026-07-31 — Pipeline runtime hardening + remove modules — **applied** (agent)
 
 - **Naming:** Product/path strings standardized to **CognitiveMiddleware**; portable relative links (no absolute `file:///mnt/...`).
