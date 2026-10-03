@@ -13,7 +13,7 @@ CharacterSimulator is two related layers:
 | Layer | What it is | Where |
 |:---|:---|:---|
 | **Runtime / framework** | Prompt-based **character OS** for any LLM chat — somatic body, psyche matrix, card authority, safety gates | This repo (`CharacterRuntime.md`, `Framework/`) |
-| **Desktop host** | **Simulacra** — native app that loads cards, runs sessions, themes, portraits/scenes, SQLite profiles | Sibling repo **CharacterSimulator.UI** (product name: Simulacra) |
+| **Desktop host** | **Simulacra** — native app that loads cards, runs sessions, themes, portraits/scenes, SQLite profiles | Sibling repo **Simulacra** |
 
 The runtime ensures characters:
 
@@ -36,7 +36,7 @@ Think of the framework as a **character OS for LLMs**, and the desktop project a
    - **[4] Load or paste** — Existing pack (`Characters/[slug].md` / `.json`).
 3. Play. Say `save` or `show pack` anytime to export session data.
 
-Desktop host (**Simulacra**): build and run **CharacterSimulator.UI** (`CharacterSimulator.GUI`) against the same card formats.
+Desktop host (**Simulacra**): build and run **Simulacra** (`CharacterSimulator.GUI`) against the same card formats.
 
 ---
 
@@ -89,4 +89,4 @@ Imaging stills use **`physical` + `character_style`** (see [`Images/CharacterRen
 - [Changelog](CHANGELOG.md) — History
 - [License](LICENSE.md) — Usage rights
 
-**Simulacra** (desktop host) docs — themes, SQLite, GUI: sibling **CharacterSimulator.UI** `README.md`.
+**Simulacra** (desktop host) docs — themes, SQLite, GUI: sibling **Simulacra** `README.md`.

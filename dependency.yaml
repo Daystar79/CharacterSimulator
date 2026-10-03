@@ -10,8 +10,8 @@ related:
   git: git@github.com:Daystar79/CognitiveMiddleware.git
   branch: main
   # Last inspected tip (update when syncing shared assets).
-  pinned_commit: 4ea247fea72a053041616d5556be4abe2068cded
-  pin_date: "2026-07-29"
+  pinned_commit: acf9c3ab1d6b28ac25c55ac0c6fc7e7405da3520
+  pin_date: "2026-10-03"
   note: >
     CognitiveMiddleware no longer ships a Simulator. Chat/RP runtime lives only
     in CharacterSimulator. Shared lineage: psyche model, realm data, card/log
