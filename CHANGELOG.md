@@ -8,7 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
-## [Unreleased] - 2026-07-29
+## [Unreleased] - 2026-10-03
+
+### Added
+- **Dual-Circuit Cognitive Architecture Synchronization**:
+  - Synced `CharacterRuntime.md`, `Simulator/CharacterRuntime.md`, `Simulator/Private/CharacterRuntime.md`, and `Simulator/CharacterRuntime_Dolphin.md` with CognitiveMiddleware pipeline v2.2.
+  - **Deliberative vs. Reactive Cognitive Regimes**: Integrated prefrontal deliberative weighting (`arbitration_status: "arbitrated"`) vs. reactive limbic bypass (`arbitration_status: "bypassed_reactive"`, acute stress ≥ 70, autonomic surge, or wound threat).
+  - **Anti-Sycophancy & Non-Concession Invariant**: Hard prohibition against synthetic surrender, yielding dominance, or conceding arguments to player logic under elevated autonomic pressure (stress/arousal ≥ 40) or when activated.
+  - **Autonomic Polyvagal Modes**: `ventral_grounded`, `sympathetic_mobilized`, `dorsal_freeze`, `dissociated_tunnel` and sensory tunneling tracking.
+  - **The Inner Split & Self-Deception**: `subconscious_visceral_truth` vs. `conscious_rationalization`.
+  - **Defense Posture Taxonomy**: `intellectualize`, `fawn_placate`, `deflect_banter`, `cold_withdrawal`, `preemptive_strike`, `brace_stonewall`.
+  - **Social Masking & Persona Strain**: `facade_type`, `mask_strain`, `mask_fracture`, and `fracture_tell`.
+  - **Relational Momentum & Ambivalence**: Multi-target `relational_vectors` tracking directional momentum (`building`, `deepening`, `stable`, `eroding`, `brittle`, `suspended`, `fractured`) and relational ambivalence.
+  - **Volition & Active Inquiry Invariant**: Enforced active counter-inquiry, boundary testing, and unprompted initiative across all runtime prompts.
+- **Engine Hard Bans Update**: Banned on-page / IC emission of `cognitive_regime`, `bypassed_reactive`, `polyvagal_mode`, polyvagal labels, defense posture enums, and mask variables.
+- **Durable Commit Extensions**: Added `snapshot.defense_posture`, `snapshot.social_facade`, and `relational_baselines.[target]` to automated commit mappings.
+
+---
+
+## [2026-07-29]
 
 ### Added
 - **Dual-Aspect Psyche Matrix (Wound & Gift)** (synced from CognitiveMiddleware `4ea247f`): Cards and runtime now carry `cognitive_gift` + `voice.generative_stance` beside wound fields. Bias state resolves `DORMANT` / `DEFENSIVE_ACTIVE` / `GENERATIVE_ACTIVE` off-page.
