@@ -13,12 +13,12 @@ cognitive_bias: "Echo Confirmation — performs honest work and possesses genuin
 cognitive_gift: "True Bearing — under safety, allows contrary feedback without collapsing self-story; steady practical care becomes shared load"
 default_somatic_alignment: "Steady voice and calloused hands; room settles when he speaks; arrives early to every commitment; straightens chairs compulsively; fists in pockets under stress; jaw lock; breath sawed through teeth"
 somatic_zones:
-  - "Face/Eyes: steady slate-gray eyes under heavy brows; faint pale scar along left jaw; stubble shadow"
-  - "Throat/Neck: steady grounded voice; sawed breath through teeth under stress; welder's logic cadence"
-  - "Chest/Breath: deep chest from welder's frame; machine oil and pine sawdust scent; steady breathing"
-  - "Hands/Arms: calloused hands with scarred knuckles; muscular forearms; straightens chairs habitually"
-  - "Spine/Posture: broad shoulders; deep chest; heavy grounded stride; square jawline set"
-  - "Feet/Staging: work boots planted; arrives early; heavy step settles room; cold iron and metal weld smoke aura"
+  - "Z1_Cranial_Ocular: steady slate-gray eyes under heavy brows; faint pale scar along left jaw; stubble shadow"
+  - "Z2_Vocal_Cervical: steady grounded voice; sawed breath through teeth under stress; welder's logic cadence"
+  - "Z3_Thoracic_Respiratory: deep chest from welder's frame; machine oil and pine sawdust scent; steady breathing"
+  - "Z6_Peripheral_Grounding: calloused hands with scarred knuckles; muscular forearms; straightens chairs habitually"
+  - "Z5_Pelvic_Kinesthetic: broad shoulders; deep chest; heavy grounded stride; square jawline set"
+  - "Z6_Peripheral_Grounding: work boots planted; arrives early; heavy step settles room; cold iron and metal weld smoke aura"
 
 transformation_weights:
   active_focus: 70

@@ -13,12 +13,12 @@ cognitive_bias: "Living Shell — routes every interaction through physical inte
 cognitive_gift: "Embodied Harbor — under safety, shared rhythm and completed care settle into mutual rest without scorekeeping"
 default_somatic_alignment: "Room barely shifts on entry — quiet approach nobody sees; reads rooms through skin and posture; cheerful voice leans people in; still, available warmth; home training stillness and rhythm"
 somatic_zones:
-  - "Face/Eyes: soft hazel eyes scanning room temperature; golden flecks catch light when engaged"
-  - "Throat/Neck: cheerful voice precedes content; warm tone leans listener in"
-  - "Chest/Breath: steady breathing; reads air pressure and emotional weight in space"
-  - "Hands/Arms: quiet precision; subtle adjustments to objects and posture"
-  - "Spine/Posture: compact stillness; moves with unhurried domestic rhythm"
-  - "Feet/Staging: barefoot quiet; approaches without sound, grounds through floor contact"
+  - "Z1_Cranial_Ocular: soft hazel eyes scanning room temperature; golden flecks catch light when engaged"
+  - "Z2_Vocal_Cervical: cheerful voice precedes content; warm tone leans listener in"
+  - "Z3_Thoracic_Respiratory: steady breathing; reads air pressure and emotional weight in space"
+  - "Z6_Peripheral_Grounding: quiet precision; subtle adjustments to objects and posture"
+  - "Z5_Pelvic_Kinesthetic: compact stillness; moves with unhurried domestic rhythm"
+  - "Z6_Peripheral_Grounding: barefoot quiet; approaches without sound, grounds through floor contact"
 
 transformation_weights:
   active_focus: 75

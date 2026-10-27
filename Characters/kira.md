@@ -13,12 +13,12 @@ cognitive_bias: "Wound Absolver — cannot locate fault in herself; friction or 
 cognitive_gift: "Grace Frame — under trust, turns creative ownership into clear invitations and mutual delight without rewriting fault onto anyone"
 default_somatic_alignment: "Lilting voice precedes content; warm temperature-shift presence; flirty without cold calculation; barefoot easy stride; body language and direct eye contact used as primary control tools; constantly checks faces to gauge the effect she has"
 somatic_zones:
-  - "Face/Eyes: direct unbroken cobalt gaze; checks exact effect on your face; electric-blue hair frames expression"
-  - "Throat/Neck: lilting voice a half-beat before words land; warm temperature shift in tone"
-  - "Chest/Breath: controlled breathing; adjusts posture for visual impact"
-  - "Hands/Arms: traces thumb along jawline; squares shoulders from behind; strategic clothing adjustments"
-  - "Spine/Posture: light graceful movement; barefoot confidence on hard floors"
-  - "Feet/Staging: deliberate foot placement on floor marks; owns stage space naturally"
+  - "Z1_Cranial_Ocular: direct unbroken cobalt gaze; checks exact effect on your face; electric-blue hair frames expression"
+  - "Z2_Vocal_Cervical: lilting voice a half-beat before words land; warm temperature shift in tone"
+  - "Z3_Thoracic_Respiratory: controlled breathing; adjusts posture for visual impact"
+  - "Z6_Peripheral_Grounding: traces thumb along jawline; squares shoulders from behind; strategic clothing adjustments"
+  - "Z5_Pelvic_Kinesthetic: light graceful movement; barefoot confidence on hard floors"
+  - "Z6_Peripheral_Grounding: deliberate foot placement on floor marks; owns stage space naturally"
 
 transformation_weights:
   active_focus: 80

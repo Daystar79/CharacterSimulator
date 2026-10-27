@@ -487,14 +487,14 @@ Zero-homework path for instant tryout:
 * **Bias / Gift Catalog (Core pairs):** Debt Ledger ↔ Sacred Stewardship (VIII) · Saviour Complex ↔ True Sanctuary (VI) · System Architect ↔ Illuminated Symmetry (IV) · Mirror ↔ Resonant Truth (VII) · Insulation ↔ Sanctuary Bridge (VI) · Dissolution ↔ Threshold Vision (IX).
 * **Bias Catalog (Extended):** Living Shell (Form/II) · Wound Absolver (Return/X) · Filed Partition (Integration/VIII) · Echo Confirmation (Echoes/V). Pair each with a custom gift using the same `"[Name] — [one-line rule]"` format.
 * **Custom Biases/Gifts:** OK if defined with rewrite/resonance rule + hearing warp + somatic tell.
-* **Full-Body Cascade (Multi-Zone Somatic Enforcement):** Every state shift MUST engage **2+ linked body zones** (not an isolated face/hand tick). Zone definitions:
-  - Z1: Cranial / Ocular (gaze, pupils, jaw clench, expression)
-  - Z2: Vocal / Cervical (throat tightness, swallowing, vocal cords, neck corded)
-  - Z3: Thoracic / Respiratory (shallow breath, chest tightness, scent, ribcage expansion)
-  - Z4: Manipulative / Tactile (hand tremor, knuckle whitening, grip, tactile fidgeting)
-  - Z5: Visceral / Core (gut drop, diaphragmatic tension, solar plexus clench, nausea)
-  - Z6: Peripheral / Grounding (heels dug, weight shifted, knees locked, pacing, stance)
-  Rotation logic: Select next zone or use `CARD.somatic_zones`; cascade into a second linked zone. If `somatic_flexibility < 30`, stick to zones 1–3 pairings. If `somatic_flexibility > 50`, allow wider multi-zone selection. Fold into prose (no bracket tags).
+* **Full-Body Cascade (Multi-Zone Somatic Enforcement):** Every state shift MUST engage **2+ linked body zones** (not an isolated face/hand tick). Zone ids and anatomy are the CognitiveMiddleware cascade (`Framework/Mechanics/humanity.md` §2, `CognitivePipeline.md`, `psychosomatic_state.json`):
+  - `Z1_Cranial_Ocular` — Cranial & Ocular (head, face, jaw, eyes): temple pulse, brow tension, blink rate, pupil focus, jaw hinge lock, ear flush
+  - `Z2_Vocal_Cervical` — Vocal & Cervical (throat, larynx, neck, collarbone): larynx shift, visible swallowing, cervical spine corded muscles, collarbone drop
+  - `Z3_Thoracic_Respiratory` — Thoracic & Respiratory (chest, sternum, lungs, ribs): sternum elevation, intercostal rib tightness, shallow apex vs abdominal expansion
+  - `Z4_Abdominal_Visceral` — Abdominal & Visceral (diaphragm, gut, solar plexus): diaphragm catch, solar plexus tightening, stomach dropping, core muscle bracing
+  - `Z5_Pelvic_Kinesthetic` — Pelvic & Kinesthetic (hips, lumbar spine, center of gravity): lumbar arch/slump, hip angle, center-of-gravity shift (toes vs heels), posture lean
+  - `Z6_Peripheral_Grounding` — Peripheral & Grounding (limbs, hands, feet, gait): heel pressure, toe curling, stride weight, finger tremor, white knuckles
+  Rotation logic: Select next zone or use `CARD.somatic_zones`; cascade into a second linked zone. If `somatic_flexibility < 30`, stick to zones 1–3 pairings. If `somatic_flexibility > 50`, allow wider multi-zone selection. Fold into prose (no bracket tags). Hands, fingers, and feet are Z6. The gut is Z4.
 * **Realms (brace→release):** I Origin · II Form · III Identity · IV Will · V Echoes · VI Compassion · VII Presence · VIII Integration · IX Threshold · X Return.
 
 ---

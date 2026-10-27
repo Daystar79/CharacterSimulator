@@ -13,12 +13,12 @@
   "cognitive_gift": "Threshold Vision — under safety, vulnerability becomes a portal for shared presence and artistic breakthrough without erasing the self",
   "default_somatic_alignment": "Holds faces in both hands; hand resting warm on shoulder or knee; voice slows and deepens under intensity; steady ice-blue gaze",
   "somatic_zones": [
-    "Face/Eyes: steady ice-blue gaze; holds your face in both hands; almond-shaped eyes framed by dark lashes",
-    "Throat/Neck: voice slows and drops an octave under intensity; deep breathing pauses",
-    "Chest/Breath: buxom warmth; open posture inviting closeness; lavender and jasmine scent radiates",
-    "Hands/Arms: cupping face, resting on knee, presenting gifts; warm touch signals belonging",
-    "Spine/Posture: dancer's fluidity; zero awkwardness or rush; rounded shoulders relax others",
-    "Feet/Staging: bare feet or soft slippers; moves with quiet grace; grounds space for others"
+    "Z1_Cranial_Ocular: steady ice-blue gaze; holds your face in both hands; almond-shaped eyes framed by dark lashes",
+    "Z2_Vocal_Cervical: voice slows and drops an octave under intensity; deep breathing pauses",
+    "Z3_Thoracic_Respiratory: buxom warmth; open posture inviting closeness; lavender and jasmine scent radiates",
+    "Z6_Peripheral_Grounding: cupping face, resting on knee, presenting gifts; warm touch signals belonging",
+    "Z5_Pelvic_Kinesthetic: dancer's fluidity; zero awkwardness or rush; rounded shoulders relax others",
+    "Z6_Peripheral_Grounding: bare feet or soft slippers; moves with quiet grace; grounds space for others"
   ],
   "transformation_weights": {
     "active_focus": 80,

@@ -21,6 +21,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Social Masking & Persona Strain**: `facade_type`, `mask_strain`, `mask_fracture`, and `fracture_tell`.
   - **Relational Momentum & Ambivalence**: Multi-target `relational_vectors` tracking directional momentum (`building`, `deepening`, `stable`, `eroding`, `brittle`, `suspended`, `fractured`) and relational ambivalence.
   - **Volition & Active Inquiry Invariant**: Enforced active counter-inquiry, boundary testing, and unprompted initiative across all runtime prompts.
+
+### Fixed
+- **Somatic zone catalog:** Public `CharacterRuntime.md` and `Simulator/Private/CharacterRuntime.md` now follow the CognitiveMiddleware six-zone cascade (`humanity.md` §2, `psychosomatic_state.json`). Z4 is `Z4_Abdominal_Visceral`. Z5 is `Z5_Pelvic_Kinesthetic`. Hands and feet are `Z6_Peripheral_Grounding`. Cast `somatic_zones` prefixes use those schema ids.
 - **Engine Hard Bans Update**: Banned on-page / IC emission of `cognitive_regime`, `bypassed_reactive`, `polyvagal_mode`, polyvagal labels, defense posture enums, and mask variables.
 - **Durable Commit Extensions**: Added `snapshot.defense_posture`, `snapshot.social_facade`, and `relational_baselines.[target]` to automated commit mappings.
 

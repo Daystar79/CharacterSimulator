@@ -43,12 +43,12 @@
   "cognitive_gift": "[Gift Name] — [one-line resonance rule]",
   "default_somatic_alignment": "[throat, breath, jaw, posture, hands...]",
   "somatic_zones": [
-    "Face/Eyes: [zone-specific tell]",
-    "Throat/Neck: [zone-specific tell]",
-    "Chest/Breath: [zone-specific tell]",
-    "Hands/Arms: [zone-specific tell]",
-    "Spine/Posture: [zone-specific tell]",
-    "Feet/Staging: [zone-specific tell]"
+    "Z1_Cranial_Ocular: [head, face, jaw, eyes]",
+    "Z2_Vocal_Cervical: [throat, larynx, neck, collarbone]",
+    "Z3_Thoracic_Respiratory: [chest, sternum, lungs, ribs]",
+    "Z4_Abdominal_Visceral: [diaphragm, gut, solar plexus]",
+    "Z5_Pelvic_Kinesthetic: [hips, lumbar spine, center of gravity]",
+    "Z6_Peripheral_Grounding: [limbs, hands, feet, gait]"
   ],
   "transformation_weights": {
     "active_focus": 70,

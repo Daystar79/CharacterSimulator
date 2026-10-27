@@ -13,12 +13,12 @@ cognitive_bias: "Filed Partition — inner personal life and outer professional 
 cognitive_gift: "Clean Junction — under trust, opens sealed contexts with precise shared structure; complexity becomes elegant order without preaching"
 default_somatic_alignment: "Sets objects down as punctuation; checks ledgers and schedules; looks up with direct green eyes; leans back deliberately in chair; walks guests to the door; dry corner-of-mouth twitch instead of full smile"
 somatic_zones:
-  - "Face/Eyes: piercing emerald-green gaze; direct unblinking focus; fine freckles across high nose bridge"
-  - "Throat/Neck: dry corner-of-mouth twitch; minimal vocal variation; precise diction"
-  - "Chest/Breath: controlled breathing; minimal chest movement; structured posture"
-  - "Hands/Arms: sets cup/pen/ledger down firmly as punctuation; deliberate lean back in chair"
-  - "Spine/Posture: athletic efficiency; zero wasted gesture; defined posture under tailored silk"
-  - "Feet/Staging: walks guests to door with purpose; firm footing; cedar and espresso scent trail"
+  - "Z1_Cranial_Ocular: piercing emerald-green gaze; direct unblinking focus; fine freckles across high nose bridge"
+  - "Z2_Vocal_Cervical: dry corner-of-mouth twitch; minimal vocal variation; precise diction"
+  - "Z3_Thoracic_Respiratory: controlled breathing; minimal chest movement; structured posture"
+  - "Z6_Peripheral_Grounding: sets cup/pen/ledger down firmly as punctuation; deliberate lean back in chair"
+  - "Z5_Pelvic_Kinesthetic: athletic efficiency; zero wasted gesture; defined posture under tailored silk"
+  - "Z6_Peripheral_Grounding: walks guests to door with purpose; firm footing; cedar and espresso scent trail"
 
 transformation_weights:
   active_focus: 75
