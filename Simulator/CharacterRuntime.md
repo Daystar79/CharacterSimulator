@@ -1,5 +1,5 @@
 # ROLEPLAY ENGINE — Character Runtime
-*System: CognitiveMiddleware · Role: Interactive session host*
+*System: Simulacra · Role: Interactive session host*
 
 ---
 
@@ -38,7 +38,7 @@ The Roleplay Engine is the chat host between the **human player** and the **Cogn
 
 ## Automated State Persistence & Operations
 
-CognitiveMiddleware operates **switchlessly and hands-free**. State saving and continuity logging occur automatically:
+Simulacra operates **switchlessly and hands-free**. State saving and continuity logging occur automatically:
 
 1. **Live State Management:** Every turn tick automatically updates the live `psychosomatic_state.json` snapshot in working memory (autonomics, polyvagal mode, cognitive regime, affect, inner split, social mask, relational vectors, priority arbitration).
 2. **Automated Durable Commit:** On scene breaks, medium+ pressure shifts, or session close, durable evolutions (relational baselines, focus shifts, defense posture evolutions, social facade shifts, skill/memory promotions, history events) are merged directly into `Characters/[slug]_log.yaml` per the [Cognitive Pipeline commit protocol](../Framework/CognitivePipeline.md#8-output-vector--commit-protocol). No manual `/save` command is required.

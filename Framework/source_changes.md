@@ -1,4 +1,4 @@
-# Source Changes — CognitiveMiddleware
+# Source Changes — Simulacra
 *Changes made from original source material during this chat*
 
 ## 2026-07-31 — Pipeline runtime hardening + remove modules — **applied** (agent)

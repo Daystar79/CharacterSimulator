@@ -1,5 +1,5 @@
 # CHARACTER RUNTIME — Dolphin 3.0 Edition (Small Model Optimized)
-*System: CognitiveMiddleware · Target Engine: Dolphin 3.0 (Llama 3.2 1B/3B & Qwen 2.5 SLMs)*
+*System: Simulacra · Target Engine: Dolphin 3.0 (Llama 3.2 1B/3B & Qwen 2.5 SLMs)*
 
 ---
 

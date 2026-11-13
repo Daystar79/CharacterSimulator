@@ -3,7 +3,7 @@ framework: CharacterSimulator
 version: "2026-07-30"
 type: rendering_engine
 load_priority: 15
-related: CognitiveMiddleware
+related: Simulacra
 description: "Constraint-based visual projector. Projects resolved RP state. Arousal = register shift. /visual level controls ceiling (default pg13). Undergarments persist."
 ---
 

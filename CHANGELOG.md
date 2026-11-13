@@ -4,11 +4,14 @@ All notable changes to the **CharacterSimulator** project will be documented in 
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project tracks chronological / semantic cuts.
 
-**Product split:** CharacterSimulator owns chat/RP. [CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware) owns drafting only (no Simulator folder). Shared psyche vocabulary; separate repos. See [`dependency.yaml`](dependency.yaml).
+**Product split:** CharacterSimulator owns chat/RP. [Simulacra](https://github.com/Daystar79/Simulacra) owns drafting only (no Simulator folder). Shared psyche vocabulary; separate repos. See [`dependency.yaml`](dependency.yaml).
 
 ---
 
 ## [Unreleased] - 2026-10-03
+
+### Changed
+- **Product rename (2026-11-13):** The related drafting product is now **Simulacra** (was CognitiveMiddleware); `dependency.yaml` pin, all in-repo references, and the `upstream` remote updated. The old `Daystar79/CognitiveMiddleware` repository does not exist.
 
 ### Added
 - **Dual-Circuit Cognitive Architecture Synchronization**:
@@ -125,7 +128,7 @@ Before the split, chat runtime lived under CognitiveMiddleware’s Simulator. Th
 | 2026-07-15 – 16 | Transformation / depth of knowledge; historical gates; YAML cards |
 | 2026-07-12 – 14 | Body-first somatics; off-page matrix; CognitiveMiddleware rebrand |
 
-CognitiveMiddleware release notes (drafting product): [CHANGELOG](https://github.com/Daystar79/CognitiveMiddleware/blob/main/CHANGELOG.md).
+Simulacra release notes (drafting product): [CHANGELOG](https://github.com/Daystar79/Simulacra/blob/main/CHANGELOG.md).
 
 ---
 

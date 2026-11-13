@@ -1,6 +1,6 @@
 # Licensing for CharacterSimulator
 
-CharacterSimulator is a hybrid project containing both software utilities (if any) and creative, conceptual specifications for live character chat and card testing. It shares a dual-license pattern with the related drafting product [CognitiveMiddleware](https://github.com/Daystar79/CognitiveMiddleware), with an explicit carve-out for author-local materials.
+CharacterSimulator is a hybrid project containing both software utilities (if any) and creative, conceptual specifications for live character chat and card testing. It shares a dual-license pattern with the related drafting product [Simulacra](https://github.com/Daystar79/Simulacra), with an explicit carve-out for author-local materials.
 
 **Use, liability, age, and platform compliance** are described in [`DISCLAIMER.md`](DISCLAIMER.md). Open licenses do not authorize illegal use. GitHub-hosted copies must also comply with [GitHub Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service) and [Acceptable Use Policies](https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies).
 
@@ -46,7 +46,7 @@ This license applies to open specifications and scaffolding, including:
 * `Characters/_template.md`, `Characters/_template_lite.md`, `Characters/_log_template.yaml`, `Characters/HOW_TO_CARD.md`, and `Characters/README.md` (format documentation / scaffolds only)
 * Project `README.md`, `CHANGELOG.md`, and other top-level documentation not listed in §3
 
-It does **not** apply to materials listed in §3. Drafting manuals, linter, and deploy tooling live in CognitiveMiddleware under that project’s license text.
+It does **not** apply to materials listed in §3. Drafting manuals, linter, and deploy tooling live in Simulacra under that project’s license text.
 
 ### You are free to:
 * **Share** — copy and redistribute the material in any medium or format.
@@ -79,4 +79,4 @@ The following paths (and any substantially similar copies or renames) are includ
 * Start from **`Characters/_template.md`** + **`_log_template.yaml`**, then drop in root **`CharacterRuntime.md`** to rehearse behaviour in chat.
 * User-created **Character Packs** (private card + memory) are not part of this repository’s open-source grant unless the user publishes them.
 * Presence of reserved files in the repo does **not** constitute an open-source license grant for those files.
-* Novel drafting tooling is **not** this product — use CognitiveMiddleware for manuscript middleware.
+* Novel drafting tooling is **not** this product — use Simulacra for manuscript middleware.

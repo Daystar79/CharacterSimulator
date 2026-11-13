@@ -1,6 +1,6 @@
 # Simulator (optional)
 
-**CognitiveMiddleware’s product core** is the Cognitive Pipeline (psychological / physical character runtime) plus the book-writing layer under `Framework/`.
+**Simulacra’s product core** is the Cognitive Pipeline (psychological / physical character runtime) plus the book-writing layer under `Framework/`.
 
 This folder is a **side tool**: live chat against a card so you can stress-test behaviour before writing — or run private RP sessions. It ships because the same pipeline is useful off-manuscript; it is not the only product surface.
 
