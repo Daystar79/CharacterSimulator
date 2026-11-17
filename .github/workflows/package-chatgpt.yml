@@ -1,4 +1,4 @@
-name: Package CharacterSimulator for ChatGPT
+name: Package CharacterSimulator Skill
 on:
   workflow_dispatch:
   push:
@@ -15,16 +15,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Build plugin ZIP
-        run: python scripts/package_chatgpt.py
-      - name: Upload plugin archive
+      - name: Validate and package skill
+        run: python scripts/validate_skill.py
+      - name: Upload skill archives
         uses: actions/upload-artifact@v4
         with:
-          name: character-simulator-chatgpt
-          path: dist/character-simulator-chatgpt.zip
+          name: character-simulator-distribution
+          path: |
+            dist/character-simulator-chatgpt.zip
+            dist/character-simulator.skill
           if-no-files-found: error
-      - name: Publish release asset
+      - name: Publish release assets
         if: startsWith(github.ref, 'refs/tags/v')
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${GITHUB_REF_NAME}" dist/character-simulator-chatgpt.zip --generate-notes --verify-tag
+        run: gh release create "${GITHUB_REF_NAME}" dist/character-simulator-chatgpt.zip dist/character-simulator.skill --generate-notes --verify-tag
