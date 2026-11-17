@@ -1,19 +1,21 @@
-# CharacterSimulator — ChatGPT plugin
+# CharacterSimulator skill distribution
+**Creator: Cian Didymos**
 
-CharacterSimulator is distributed independently of [Simulacra-Skill](https://github.com/Daystar79/Simulacra-Skill).
+CharacterSimulator is a separate product from Simulacra. Its skill includes the interactive runtime, public card templates, cognitive framework references, scene-testing instructions, and state operations.
 
-1. Run the **Package CharacterSimulator for ChatGPT** workflow from GitHub Actions.
-2. Download the `character-simulator-chatgpt` workflow artifact and extract the outer artifact archive.
-3. In ChatGPT, choose **New Plugin** and upload `character-simulator-chatgpt.zip`.
+## Build
+Run `python scripts/validate_skill.py` locally or run the **Package CharacterSimulator Skill** GitHub Actions workflow.
 
-The plugin archive contains `skills/character-simulator/SKILL.md`, the interactive runtime, cognitive framework, schemas, public templates and character-builder instructions. The path matches the ChatGPT upload dialog's reported `skills/*/SKILL.md` requirement; actual acceptance must be verified after building.
+The workflow uploads `character-simulator-distribution` containing two files:
+- `character-simulator-chatgpt.zip`: upload to ChatGPT **New Plugin**. The archive contains `skills/character-simulator/SKILL.md` at the required path.
+- `character-simulator.skill`: portable Agent Skills archive with `character-simulator/SKILL.md` at the root folder.
 
-The packager uses a strict allowlist. Named character cards, filled logs, private packs and user data are not included.
+Extract the GitHub Actions artifact ZIP first, then upload the **inner** ChatGPT ZIP. Acceptance by ChatGPT and behavior on other hosts must be verified in their respective interfaces.
 
-## Local build
+## Test
+1. Install and ask to create a character or load a supplied card.
+2. Test a baseline reaction to a scene, then branch from the same state with a changed stimulus.
+3. Request an 8–15-second skit adaptation and verify the output distinguishes simulation from editorial dialogue.
+4. Export state; confirm that it does not claim durable saving unless storage was actually available.
 
-```bash
-python scripts/package_chatgpt.py
-```
-
-This package is an LLM skill, not a hosted state service. Long-term persistence depends on the host's available file tools; users can export packs when persistence isn't available.
+Named character cards, private packs and filled logs are intentionally excluded. The skill does not ship an external database or guarantee cross-session persistence.
