@@ -3,7 +3,7 @@ name: character-simulator
 description: Stateful fictional character simulation and scene testing. Create or derive character cards, load packs, roleplay, branch reactions, test fidelity, and adapt validated scenes into short skits using the CharacterSimulator runtime.
 ---
 # CharacterSimulator
-**Creator: Cian Didymos**
+**Creator: Robert Weast**
 
 CharacterSimulator is an interactive character simulation product, independently distributed from the Simulacra skill. The bundled runtime and framework references are the authoritative implementation.
 

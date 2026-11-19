@@ -1,5 +1,5 @@
 # CharacterSimulator skill distribution
-**Creator: Cian Didymos**
+**Creator: Robert Weast**
 
 CharacterSimulator is a separate product from Simulacra. Its skill includes the interactive runtime, public card templates, cognitive framework references, scene-testing instructions, and state operations.
 

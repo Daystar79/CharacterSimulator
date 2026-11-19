@@ -23,6 +23,6 @@ A host may not have persistent file access. State held only in the chat is not s
 - All save/export claims reflect tools actually available
 
 ## Attribution
-Public creator identity: Cian Didymos.
+Public creator identity: Robert Weast.
 Product: CharacterSimulator.
 Simulacra is a separate cognitive framework/product. Do not merge the repositories or imply this skill bundles the separate Simulacra product distribution.
