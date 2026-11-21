@@ -50,6 +50,24 @@ history_anchors:
 #     dynamic: "[bond type]"
 #     notes: "[how Focus/Bias warps them]"
 
+# Optional — Golem/Loop motivations, goals, incentives, and baselines
+# motivations:
+#   [motivation_id]:
+#     reason: "[why it matters]"
+#     awareness: conscious
+# goals:
+#   [goal_id]:
+#     objective: "[what they are pursuing]"
+#     horizon: ongoing
+#     motivation: [motivation_id]
+# incentives:
+#   [incentive_id]:
+#     trigger: "[scene trigger]"
+#     stake: "[what is at risk]"
+#     goal: [goal_id]
+# physical_pain_baseline: 0
+# emotional_distress_baseline: 0
+
 scene_seeds:
   - "[Place + pressure + object]"
   - "[Alternate seed]"

@@ -14,6 +14,7 @@ SOURCE_FILES = [
     "Framework/Prompts/character_builder_prompt.md",
     "Characters/_template.md",
     "Characters/_template.json",
+    "Characters/_log_template.yaml",
     "Characters/HOW_TO_CARD.md",
     "Characters/README.md",
     "LICENSE.md",

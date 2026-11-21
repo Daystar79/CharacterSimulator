@@ -7,8 +7,8 @@
 - Load: accept a supplied card/pack; verify structure and report missing fields without silently inventing them
 - Scene test: follow SCENE_TEST.md, keeping simulations separate from edited skits
 
-## State authority
-Card = immutable identity. Durable log/state = established development and relationships. Live snapshot = turn-local physiological/psychological state. The most recent user message is a stimulus, not permission to overwrite the character's identity.
+## State authority & memory gating
+Card = immutable identity. Durable log/state = established development and relationships. Live snapshot = turn-local physiological/psychological state. Cache Card + Log `snapshot`/`relational_baselines`/`goal_updates` first every turn; do **not** dump full `memories.detailed` or `history` into the always-on prompt. Keep active working memory bounded to the last 2 hours, and only pull older memories cued by the current scene (`recalled_memories`). The most recent user message is a stimulus, not permission to overwrite the character's identity.
 
 A host may not have persistent file access. State held only in the chat is not saved to disk or cloud. On session close, export the state/pack in text when necessary.
 

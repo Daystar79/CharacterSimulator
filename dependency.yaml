@@ -10,8 +10,8 @@ related:
   git: git@github.com:Daystar79/Simulacra.git
   branch: main
   # Last inspected tip (update when syncing shared assets).
-  pinned_commit: acf9c3ab1d6b28ac25c55ac0c6fc7e7405da3520
-  pin_date: "2026-10-03"
+  pinned_commit: b9134f6
+  pin_date: "2026-11-21"
   note: >
     Simulacra no longer ships a Simulator. Chat/RP runtime lives only
     in CharacterSimulator. Shared lineage: psyche model, realm data, card/log
@@ -47,15 +47,8 @@ shared_optional_sync:
 #   Create flow lives in CharacterRuntime.md (full card, no CM ledgers)
 
 not_in_this_repo:
-  # Drafting stack stays in Simulacra only.
-  - Framework/Main.md
-  - Framework/Rules_Index.md
-  - Framework/Mechanics/**
-  - Framework/Prompts/**
-  - Framework/linter.py
-  - deploy_framework.py
-  - scripts/**
-  - Continuity_Ledger / Character_Change_Log (book ledgers)
+  # Author-local book ledgers stay in book projects only.
+  - Continuity_Ledger / Character_Change_Log (book-specific filled ledgers)
 
 git_remote:
   name: upstream

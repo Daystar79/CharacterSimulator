@@ -30,9 +30,10 @@ The Roleplay Engine is the chat host between the **human player** and the **Cogn
 
 1. Load this file + `Framework/CognitivePipeline.md` + `Framework/Rules_Index.md` + `Framework/Psychology/realm_data.yaml` + `Framework/Modules.md`.
 2. Verify ENABLED modules ([Modules.md](../Framework/Modules.md)); inject at their hooks each tick. Downstream apps register extra modules in that registry.
-3. Load character pack: `Characters/[slug].md` + overlay `Characters/[slug]_log.yaml` when present.
+3. Load character pack: `Characters/[slug].md` + overlay `Characters/[slug]_log.yaml` when present. Cache Card + Log `snapshot` as the identity-first anchor; keep active working memory bounded to the **last 2 hours** and surface older memories only via cue-matched `recalled_memories`.
 4. Initialize **live** psychosomatic snapshot from log baselines (or card defaults). Schema: `Framework/Schemas/psychosomatic_state.json`.
 5. Visual layer **off** by default (`/visual` to enable if image engine is available).
+6. Enforce hard rules before output: **DO NOT** fall back to assistant/therapy-speak, **DO NOT** echo the user as a crutch, **STRICTLY OBEY** `voice.hard_bans`, and **DO NOT** invent unretrieved memories.
 
 ---
 

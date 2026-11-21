@@ -19,6 +19,7 @@ Thumbs.db
 Releases/
 Build/
 Audits/
+dist/
 
 # Temp/Scratch files
 scratch/

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-OS-aware tool launcher for Cognitive Middleware.
+OS-aware tool launcher for Simulacra.
 
 Detects Windows vs Unix-like hosts and runs the matching platform wrapper
 (or falls back to the shared Python cores). Prefer this entry point for agents.
@@ -8,6 +8,7 @@ Detects Windows vs Unix-like hosts and runs the matching platform wrapper
 Usage:
   python scripts/run.py deploy [target]
   python scripts/run.py lint <path> [--ext .md,.txt]
+  python scripts/run.py golem --card <card.yaml> --stimulus <json_or_path>
   python scripts/run.py migrate
 
 Environment:
@@ -26,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = Path(__file__).resolve().parent
 
-TOOLS: tuple[str, ...] = ("deploy", "lint", "validate", "validate_state", "validate-state", "migrate")
+TOOLS: tuple[str, ...] = ("deploy", "lint", "validate", "validate_state", "validate-state", "migrate", "golem")
 
 
 def detect_family() -> str:
@@ -85,6 +86,8 @@ def python_core(tool: str) -> Path:
         return ROOT / "scripts" / "validate_state.py"
     if tool == "migrate":
         return ROOT / "migrate_optimized.py"
+    if tool == "golem":
+        return ROOT / "scripts" / "golem.py"
     raise KeyError(tool)
 
 
@@ -141,13 +144,15 @@ def usage() -> None:
     """Print usage information."""
     family = detect_family()
     print(
-        f"""Cognitive Middleware — OS-aware launcher
+        f"""Simulacra — OS-aware launcher
 Detected OS family: {family}
 
 Usage:
   python scripts/run.py deploy [book_name_or_path]
+  python scripts/run.py deploy --update /path/to/installation [--check]
   python scripts/run.py lint <path> [linter args...]
   python scripts/run.py validate [state_file_or_dir]
+  python scripts/run.py golem --card <card.yaml> --stimulus <json_or_path>
 
 Platform wrappers (AI: pick by OS if not using this launcher):
   Unix:    scripts/unix/deploy.sh | lint.sh | validate.sh
